@@ -1,0 +1,160 @@
+.tile{
+    position:relative;
+    cursor: pointer;
+}
+
+.tileImageWrapper{
+    width:100%;
+    padding-bottom: 75%;
+    position:relative;
+    overflow: hidden;
+}
+
+.tileImageWrapper .tileImage{
+    position: absolute;
+    top:0;
+    height:100%;
+    width:100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.tileContentWrapper{
+    position: absolute;
+    bottom:0;
+    background-color: #FFFFFF9A;
+    padding:1em;
+    width:calc(100% - 2em);
+    transition: .4s;
+    backdrop-filter:blur(5px);
+}
+
+
+    .tile:hover .tileContentWrapper{
+        background-color: #000000CA;
+        color:white;
+    }
+
+    .tileIconWrapper{
+        position: absolute;
+        top:1em;
+        right:1em;
+        width:3.5em;
+        height:3.5em;
+        background-color: #FFFFFF9A;
+        text-align: center;
+        border-radius: 50%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .tileIconWrapper svg{
+            font-size: 1.8em;
+        }
+
+    .tileHeading{
+        padding-bottom:.5em;
+    }
+
+        .tileTitle{
+            font-size: 1.6em;
+        }
+
+
+        .tileCompanyName{
+            font-size: 0.9em;
+            padding-left:0.5em;
+        }
+
+    .tileDescription{
+        transition:.4s;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        max-height:0em;
+        color:black
+    }
+
+    .tile:hover .tileDescription{
+        max-height:10em;
+        margin-bottom:.5em;
+        color:white;
+    }
+
+    .tileLocation span{
+        display:inline-block;
+    }
+
+        .tileLocationIcon{
+            font-size: 1.5em;
+            margin-right:.5em;
+        }
+.tilePay{
+    float: right;
+    vertical-align:middle;
+    position: relative;
+    top: 5px;
+}
+
+
+.searchRowContentWrapper{
+    padding:1em;
+    cursor:pointer;
+}
+
+.searchRowContentWrapper .searchRowTitle span{
+    padding-left: .5em;
+    font-size: .6em;
+    text-transform: none;
+}
+
+.searchRowContentWrapper .searchRowTitle{
+    margin:none;
+    font-size: 1.6em;
+}
+
+.searchRowLocation .faIcon{
+    font-size: 1.5em;
+}
+
+.searchRowHeader{
+    display:flex;
+}
+
+.searchRowTitle{
+    flex-grow: 1;
+}
+
+.searchRowLocation>*{
+    display:inline;
+    float:left;
+}
+
+.searchRowLocation span{
+    padding-left:.5em;
+}
+
+.searchRowDescription{
+    max-height: 0em;
+    transition:.4s;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+.searchRowPay{
+    margin-right: 30px;
+    position: relative;
+    top: 3px;
+}
+
+
+.searchRow:hover .searchRowDescription{
+    max-height:10em;
+    margin-top:.5em;
+}

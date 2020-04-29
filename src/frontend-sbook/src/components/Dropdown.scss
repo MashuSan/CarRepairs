@@ -1,0 +1,8 @@
+.dropdownItem:hover{
+    background-color:rgba(27, 27, 27, 0.08);
+    cursor:pointer;
+}
+
+.dropdownItem:last-child{
+    border-bottom:none !important
+}
