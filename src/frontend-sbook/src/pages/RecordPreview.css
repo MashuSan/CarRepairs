@@ -1,0 +1,77 @@
+/*.internshipDetailHeaderImageWrapper{
+    
+    padding-bottom: 75%;
+    position:relative; 
+    overflow: hidden;
+    max-width: 30em;
+}
+
+
+
+.internshipDetailHeader{
+    position:relative;
+    height:15em;
+}*/
+
+
+.internshipDetailHeader{
+    height:18em;
+    position: relative;
+    overflow: hidden;
+}
+
+.internshipDetailHeaderImage{
+    width:100%;
+    max-width: 32em;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top:0;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.internshipDetailHeaderBackground{
+    width:calc(100% + 2em);
+    height:calc(100% + 2em);
+    top:-1em;
+    left:-1em;    
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter:blur(5px);
+}
+
+.internshipDetailContent{
+    padding:1em;
+}
+
+.infoLabel .faIcon{
+    font-size: 1.2em;
+}
+
+.infoLabel *{
+    display: inline;
+}
+
+.infoLabel span{
+    padding-left:.5em;
+}
+
+.infoLabel{
+    display:inline-block;
+    padding-left:1em;
+}
+
+.internshipDetail h1 span{
+    padding-left: .5em;
+    font-size: .6em;
+    text-transform: none;
+}
+
+.buttonSection{
+    padding-top:2em;
+}
+

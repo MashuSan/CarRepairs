@@ -1,0 +1,23 @@
+
+.title{
+  padding: 0em 1em;
+}
+
+.header .searchBar, .header .searchBar *{
+  color:white !important;
+  border-color:white !important;
+}
+
+.header{
+  .links{
+    display:grid;
+    text-transform: uppercase;
+    grid-gap:2em;
+    grid-template-columns: auto auto auto;
+  }
+
+  .headerLink{
+    color:white;
+
+  }
+}
