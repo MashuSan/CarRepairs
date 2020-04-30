@@ -8,11 +8,13 @@
       "typescript": "3.3.3333"
    },
    "dependencies": {
+      "express": "^4.17.1",
       "pg": "^7.3.0",
       "reflect-metadata": "^0.1.10",
       "typeorm": "0.2.24"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
+      "start": "ts-node src/index.ts",
+      "build": "tsc --project tsconfig.json"
    }
 }
