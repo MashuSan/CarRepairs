@@ -11,35 +11,37 @@ createConnection().then(async connection => {
     app.use(bodyParser.json());
     const taskRepository = connection.getRepository(Service);
 
-app.get('/services', async function(req, res){
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    const service = await taskRepository.find();
-    res.send(service);
-})
+    app.get('/services', async function(req, res){
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        const service = await taskRepository.find();
+        res.send(service);
+    })
 
-app.get('/services/:id', async function(req, res){
-    const results = await taskRepository.findOne(req.params.id);
-    return res.send(results);
-})
+    app.get('/services/:id', async function(req, res){
+        const results = await taskRepository.findOne(req.params.id);
+        return res.send(results);
+    })
 
-app.post("/services", async function(req: Request, res: Response) {
-    const service = await taskRepository.create(req.body);
-    const results = await taskRepository.save(service);
-    return res.send(results);
-});
+    app.post("/services", async function(req: Request, res: Response) {
+        const service = await taskRepository.create(req.body);
+        const results = await taskRepository.save(service);
+        return res.send(results);
+    });
 
-app.put("/services/:id", async function(req: Request, res: Response) {
-    const service = await taskRepository.findOne(req.params.id);
-    taskRepository.merge(service, req.body);
-    const results = await taskRepository.save(service);
-    return res.send(results);
-});
+    app.put("/services/:id", async function(req: Request, res: Response) {
+        const service = await taskRepository.findOne(req.params.id);
+        taskRepository.merge(service, req.body);
+        const results = await taskRepository.save(service);
+        return res.send(results);
+    });
 
-app.delete("/services/:id", async function(req: Request, res: Response) {
-    const results = await taskRepository.delete(req.params.id);
-    return res.send(results);
-});
+    app.delete("/services/:id", async function(req: Request, res: Response) {
+        const results = await taskRepository.delete(req.params.id);
+        return res.send(results);
+    });
 
-app.listen(8080);
+    app.listen(5000, function() {
+        console.log("Application is up and running");
+    });
 
 }).catch(error => console.log(error));
