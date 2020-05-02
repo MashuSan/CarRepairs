@@ -6,13 +6,9 @@ import {
 import {withRouter} from 'react-router-dom';
 import "./Record.css";
 import {
-    AboutUsPrivateSection, ContactPrivateSection, FoundingYearPrivateSection,
-    NamePrivateSection, OurVissionPrivateSection,
-     SavePrivateSection, SitesPrivateSection
+    AboutUsPrivateSection, ContactPrivateSection,
+    OurVissionPrivateSection, SavePrivateSection
 } from "../components/Profile/Record";
-
-
-//Private Company Account Page
 
 class CompanyAccount extends React.Component {
     constructor(props) {
@@ -23,28 +19,31 @@ class CompanyAccount extends React.Component {
     async componentDidMount() {
     }
 
-    saveData = async () => {
+    saveData = async (event) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                date: "2.5.2020",
+                kmStatus: 50000,
+                description: "I did something here",
+                materials: "None",
+                technicsName: "Matys"
+            })
+        }
+        fetch('http://localhost:5000/services', requestOptions)
+        event.preventDefault()
     };
-
 
     render() {
         return (<main>
             <Card className="profileBase">
-                <NamePrivateSection
-                    name={"aaa"}
+                <AboutUsPrivateSection
                     updateInput={this.updateInput}
                 />
-                <div>
-                    <AboutUsPrivateSection
-                        aboutUs={"aaa"}
-                        updateInput={this.updateInput}
-                    />
-                    <br/><br/>
-                    <FoundingYearPrivateSection
-                        foundingYear={"aaa"}
-                        updateInput={this.updateInput}
-                    />
-                </div>
                 <OurVissionPrivateSection
                     ourVission={"aaa"}
                     updateInput={this.updateInput}/>
@@ -54,10 +53,6 @@ class CompanyAccount extends React.Component {
                     phone={"aaa"}
                     websiteUrl={"aaa"}
                     updateInput={this.updateInput}/>
-                <SitesPrivateSection
-                    socialSites={""}
-                    changeSocialSitesLinks={this.changeSocialSitesLinks}
-                />
                 <SavePrivateSection
                     pushToHistory={(path) => this.props.history.push(path)}
                     databaseId={""}
@@ -67,19 +62,8 @@ class CompanyAccount extends React.Component {
         </main>)
     }
 
-
     updateInput = e => {
         this.setState({[e.target.name]: e.target.value});
-    };
-
-
-    changeSocialSitesLinks = (e) => {
-        this.setState({
-            socialSites: {
-                ...this.state.socialSites,
-                [e.target.name]: e.target.value
-            }
-        });
     };
 }
 
