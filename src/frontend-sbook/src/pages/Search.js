@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 import Toggle from '../components/Toggle';
+import ItemList from './Getter'
 
 
 ////////////// Zbyva jen smazat mapovani studentu
@@ -162,6 +163,7 @@ class Search extends React.Component {
             <Grid container spacing={3} id="searchResults">
                 {this.mapToGrid(this.state.tab === "events" ? this.mapEvents() : [])}
             </Grid>
+            <ItemList></ItemList>
         </main>
     }
 }
