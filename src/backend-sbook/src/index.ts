@@ -5,25 +5,27 @@ import {Request, Response} from "express";
 import * as express from "express";
 import * as bodyParser from  "body-parser";
 
-createConnection().then(async connection => {
+const app = express();
+app.use(bodyParser.json());
+import cors = require('cors');
+app.use(cors());
 
-    const app = express();
-    app.use(bodyParser.json());
+createConnection().then(async connection => {
     const taskRepository = connection.getRepository(Service);
 
-    app.get('/services', async function(req, res){
+    app.get('/services', async function(req: Request, res: Response){
         res.setHeader('Access-Control-Allow-Origin', '*');
         const service = await taskRepository.find();
         res.send(service);
     })
 
-    app.get('/services/:id', async function(req, res){
+    app.get('/services/:id', async function(req: Request, res: Response){
         const results = await taskRepository.findOne(req.params.id);
         return res.send(results);
     })
 
     app.post("/services", async function(req: Request, res: Response) {
-        const service = await taskRepository.create(req.body);
+        const service = taskRepository.create(req.body);
         const results = await taskRepository.save(service);
         return res.send(results);
     });

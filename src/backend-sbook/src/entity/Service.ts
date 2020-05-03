@@ -7,10 +7,10 @@ export class Service {
     id: number;
 
     @Column()
-    date: string;
+    date: string; //TODO: Date
 
     @Column()
-    kmStatus: string;
+    kmStatus: number;
 
     @Column()
     description: string;
@@ -19,6 +19,6 @@ export class Service {
     materials: string;
 
     @Column()
-    techniccName: string;
+    technicsName: string;
 
 }
