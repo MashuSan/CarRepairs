@@ -27,11 +27,11 @@ class CompanyAccount extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                date: "2.5.2020",
-                kmStatus: 50000,
-                description: "I did something here",
-                materials: "None",
-                technicsName: "Matys"
+                date: this.state.date,
+                kmStatus: this.state.kmStatus,
+                description: this.state.description,
+                materials: this.state.materials,
+                technicsName: this.state.technicsName
             })
         }
         fetch('http://localhost:5000/services', requestOptions)
@@ -45,13 +45,8 @@ class CompanyAccount extends React.Component {
                     updateInput={this.updateInput}
                 />
                 <OurVissionPrivateSection
-                    ourVission={"aaa"}
                     updateInput={this.updateInput}/>
                 <ContactPrivateSection
-                    personName={"aaa"}
-                    email={"aaa"}
-                    phone={"aaa"}
-                    websiteUrl={"aaa"}
                     updateInput={this.updateInput}/>
                 <SavePrivateSection
                     pushToHistory={(path) => this.props.history.push(path)}
