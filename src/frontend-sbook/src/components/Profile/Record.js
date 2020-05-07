@@ -26,16 +26,32 @@ export class OurVissionPrivateSection extends React.Component {
         return (
             <div>
                 <h2>Použité materiály</h2>
-                <div>
-                    <TextField
-                        style={{width: "100%"}}
-                        multiline
-                        rows="4"
-                        name="materials"
-                        value={this.props.materials}
-                        onChange={e => this.props.updateInput(e)}
-                    />
-                </div>
+                <Grid item>
+
+                    <label>
+                        {
+                            this.props.materials.map((question, index) => {
+                                return <div><input
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(e) => this.props.onChangeQuestion(e, index)}
+                                    value={question}
+                                />
+                                    <Button onClick={this.props.deleteQuestion(index)}>x</Button></div>
+                            })
+                        }
+                        <input
+                            type="text"
+                            name="newMotivationLetterQuestion"
+                            placeholder="[Proč se chceš úšastnit této stáže? (300 slov)]"
+                            onChange={this.props.onChangeNewQuestion}
+                            value={this.props.newMaterial}
+                        />
+                        <Button onClick={this.props.addQuestion}>
+                            přidat nový materiál
+                        </Button>
+                    </label>
+                </Grid>
             </div>)
     }
 }

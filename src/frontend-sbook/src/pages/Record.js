@@ -9,8 +9,6 @@ import {
     AboutUsPrivateSection, ContactPrivateSection,
     OurVissionPrivateSection, SavePrivateSection
 } from "../components/Profile/Record";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 
 class CompanyAccount extends React.Component {
     constructor(props) {
@@ -50,8 +48,6 @@ class CompanyAccount extends React.Component {
                     updateInput={this.updateInput}
                 />
                 <OurVissionPrivateSection
-                    updateInput={this.updateInput}/>
-                <MotivationLetterQuestions
                     materials={this.state.materials}
                     deleteQuestion={(index) => this.deleteMotivationLetterQuestion(index)}
                     onChangeQuestion={(e, index) => {
@@ -61,8 +57,7 @@ class CompanyAccount extends React.Component {
                     }}
                     newQuestion={this.state.newMaterial}
                     onChangeNewQuestion={e => this.setState({newMaterial: e.target.value})}
-                    addQuestion={(e) => this.addMotivationLetterQuestion(e)}
-                />
+                    addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
                 <ContactPrivateSection
                     updateInput={this.updateInput}/>
                 <SavePrivateSection
@@ -89,38 +84,4 @@ class CompanyAccount extends React.Component {
         this.setState({[e.target.name]: e.target.value});
     };
 }
-
-
-class MotivationLetterQuestions extends React.Component {
-
-    render() {
-        return (<Grid item>
-            <label>
-                Otázky motivačního dopisu
-                {
-                    this.props.materials.map((question, index) => {
-                        return <div><input
-                            type="text"
-                            placeholder=""
-                            onChange={(e) => this.props.onChangeQuestion(e, index)}
-                            value={question}
-                        />
-                            <Button onClick={this.props.deleteQuestion(index)}>x</Button></div>
-                    })
-                }
-                <input
-                    type="text"
-                    name="newMotivationLetterQuestion"
-                    placeholder="[Proč se chceš úšastnit této stáže? (300 slov)]"
-                    onChange={this.props.onChangeNewQuestion}
-                    value={this.props.newMaterial}
-                />
-                <Button onClick={this.props.addQuestion}>
-                    přidat novou otázku
-                </Button>
-            </label>
-        </Grid>);
-    }
-}
-
 export default withRouter(CompanyAccount);
