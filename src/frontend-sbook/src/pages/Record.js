@@ -43,6 +43,7 @@ class CompanyAccount extends React.Component {
 
     render() {
         return (<main>
+            <h1>Vytvor záznam</h1>
             <Card className="profileBase">
                 <AboutUsPrivateSection
                     updateInput={this.updateInput}

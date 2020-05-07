@@ -1,31 +1,31 @@
 import React from "react";
 import {Button, ButtonGroup, Card, Grid, InputAdornment, TextField, Typography} from "@material-ui/core";
+import "./Record.css"
 
 export class AboutUsPrivateSection extends React.Component {
     render() {
         return (
-            <div>
-                <h2>Popis závady</h2>
-                <div>
-                    <TextField
-                        style={{width: "100%"}}
-                        multiline
-                        rows="4"
-                        name="description"
-                        value={this.props.description}
-                        onChange={e => this.props.updateInput(e)}
+        <div>
+            <Grid container xs={12}>
+                <Grid item sm={3} xs={12} />
+                <Grid item sm={6} xs={12}>
+                    <TextField label="Popis závady"
+                               multiline
+                               name="description"
+                               value={this.props.description}
+                               onChange={e => this.props.updateInput(e)}
                     />
-                </div>
-            </div>
-        );
+                </Grid>
+                <Grid item sm={3} xs={12} />
+            </Grid>
+        </div>)
     }
 }
 
 export class OurVissionPrivateSection extends React.Component {
     render() {
         return (
-            <div>
-                <h2>Použité materiály</h2>
+            <div style={{marginTop: "2em"}}>
                 <Grid item>
 
                     <label>
@@ -43,12 +43,12 @@ export class OurVissionPrivateSection extends React.Component {
                         <input
                             type="text"
                             name="newMotivationLetterQuestion"
-                            placeholder="[Proč se chceš úšastnit této stáže? (300 slov)]"
+                            placeholder="material - price"
                             onChange={this.props.onChangeNewQuestion}
                             value={this.props.newMaterial}
                         />
                         <Button onClick={this.props.addQuestion}>
-                            přidat nový materiál
+                            +
                         </Button>
                     </label>
                 </Grid>
@@ -58,25 +58,31 @@ export class OurVissionPrivateSection extends React.Component {
 
 export class ContactPrivateSection extends React.Component {
     render() {
-        return (<div>
-            <h2>Dátum a podpis</h2>
-            <Grid container spacing={4} sm={6} xs={12}>
+        return (
+        <div>
+            <Grid container xs={12}>
+                <Grid item sm={3} xs={12} />
                 <Grid item sm={6} xs={12}>
+                    <TextField label="Najazdené kilometre"
+                               value={this.props.kmStatus}
+                               name={"kmStatus"}
+                               onChange={(e) => this.props.updateInput(e)}/>
+                </Grid>
+                <Grid item sm={3} xs={12} />
+
+                <Grid item sm={3} xs={12} />
+                <Grid item sm={3} xs={12}>
                     <TextField label="Dátum"
                                value={this.props.date}
                                name={"date"}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
-                <Grid item sm={6} xs={12}>
+                <Grid item sm={6} xs={12} />
+                <Grid item sm={3} xs={12} />
+                <Grid item sm={3} xs={12}>
                     <TextField label="Technik"
                                value={this.props.technicsName}
                                name={"technicsName"}
-                               onChange={(e) => this.props.updateInput(e)}/>
-                </Grid>
-                <Grid item sm={6} xs={12}>
-                    <TextField label="km"
-                               value={this.props.kmStatus}
-                               name={"kmStatus"}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
             </Grid>
@@ -87,18 +93,10 @@ export class ContactPrivateSection extends React.Component {
 export class SavePrivateSection extends React.Component {
     render() {
         return (
-            <div style={{marginTop: "1em", textAlign: "right"}}>
-                Před zobrazením uložte změny.<br/><br/>
+            <div style={{marginTop: "1em", marginBottom: "1em"}}>
                 <Button color="primary" variant="contained"
                         onClick={this.props.saveData}>Uložit</Button>&nbsp;
             </div>
         )
     }
 }
-/*
-<Grid item sm={6} xs={12}>
-    <TextField label="Odkaz na web"
-    value={this.props.websiteUrl}
-    name={"websiteUrl"}
-    onChange={(e) => this.props.updateInput(e)}/>
-</Grid>*/
