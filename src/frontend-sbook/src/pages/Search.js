@@ -48,7 +48,19 @@ class Search extends React.Component {
 
 
     componentDidMount() {
-        //downloadRecords -> to array
+        // Here fetching data from DB
+        console.log("Fetching...")
+        const opt = {method: "GET"}
+        const data = fetch("http://localhost:5000/services", opt)
+        const abc = JSON.stringify(data)
+        console.log("Fetched: " + abc)  // Na konzole je vidiet prazdny json
+        // Z postmana je vsetko OK
+
+        // Test record
+        var test = [{link:"test_link", title:"titul",
+            subtitle:"podtitul", description:"popisok",
+            name:"Menecko", city:"Mestecko", backgroundColor:"true", pay:"true"}]
+        this.setState({events: test})
     }
 
     filter(array, string) {
