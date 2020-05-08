@@ -26,7 +26,6 @@ export default class ItemList extends React.Component {
     }
 
     render() {
-        
         return (           
             <main className="ServiceItems">
                 { this.state.products.map((product)=> {
