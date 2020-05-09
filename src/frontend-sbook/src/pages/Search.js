@@ -35,6 +35,7 @@ class Search extends React.Component {
             // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
             tab: this.props.match.params.what ? this.props.match.params.what : "events",
             tileMode: true,
+            products: []
         }
     }
 
@@ -46,9 +47,23 @@ class Search extends React.Component {
         }
     }
 
+    async fetchData(){
+        const productsRes = await fetch('http://localhost:5000/services');
+        const products = await productsRes.json(); 
+        return products;   
+    }
 
-    componentDidMount() {
-        //downloadRecords -> to array
+    async componentDidMount() {
+        const data = await this.fetchData();
+        this.setState({products: data});
+        var a = this.state.products.map((p) =>
+            ({
+                link: "test_link", title: "DFSFSDFS",
+                subtitle: "podtitul", description: p.description,
+                name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true"
+            })
+        )
+        this.setState({events: a})
     }
 
     filter(array, string) {
@@ -70,9 +85,10 @@ class Search extends React.Component {
                             + ")") : ""
                     );
                 return {
-                    title: event.name,
-                    subtitle: subtitleString,
+                    title: event.title,
+                    subtitle:event.subtitle,
                     setTime: event.setTime,
+                    date: event.name,
 
                     hourEnd: event.hourEnd,
                     hourStart: event.hourStart,
@@ -88,7 +104,7 @@ class Search extends React.Component {
                     link: "/event/" + event.id,
                 };
             }
-        ).sort((a, b) => sortTiles(a, b))
+        )  //.sort((a, b) => sortTiles(a, b))
     }
 
     mapToGrid(array) {
@@ -159,10 +175,11 @@ class Search extends React.Component {
                     onChange={(value) => console.log(value)}
                 />
             </section>
-
+                          
             <Grid container spacing={3} id="searchResults">
                 {this.mapToGrid(this.state.tab === "events" ? this.mapEvents() : [])}
             </Grid>
+
             <ItemList></ItemList>
         </main>
     }
