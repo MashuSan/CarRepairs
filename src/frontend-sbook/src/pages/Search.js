@@ -58,7 +58,7 @@ class Search extends React.Component {
         this.setState({products: data});
         var a = this.state.products.map((p) =>
             ({
-                link: "test_link", title: "titul",
+                link: "test_link", title: "DFSFSDFS",
                 subtitle: "podtitul", description: p.description,
                 name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true"
             })
@@ -85,9 +85,10 @@ class Search extends React.Component {
                             + ")") : ""
                     );
                 return {
-                    title: event.name,
-                    subtitle: subtitleString,
+                    title: event.title,
+                    subtitle:event.subtitle,
                     setTime: event.setTime,
+                    date: event.name,
 
                     hourEnd: event.hourEnd,
                     hourStart: event.hourStart,
