@@ -60,7 +60,8 @@ class Search extends React.Component {
             ({
                 link: "test_link", title: "DFSFSDFS",
                 subtitle: "podtitul", description: p.description,
-                name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true"
+                name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true",
+                id: p.id
             })
         )
         this.setState({events: a})

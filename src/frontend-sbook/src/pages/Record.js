@@ -56,7 +56,7 @@ class CompanyAccount extends React.Component {
                         materials[index] = e.target.value;
                         this.setState({materials: materials});
                     }}
-                    newQuestion={this.state.newMaterial}
+                    newMaterial={this.state.newMaterial}
                     onChangeNewQuestion={e => this.setState({newMaterial: e.target.value})}
                     addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
                 <ContactPrivateSection
