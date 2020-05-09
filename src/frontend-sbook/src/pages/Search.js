@@ -56,16 +56,13 @@ class Search extends React.Component {
     async componentDidMount() {
         const data = await this.fetchData();
         this.setState({products: data});
-        
-        // Test record
-        var a = this.state.products.map((p) => [{link:"test_link", title:"titul",
-        subtitle:"podtitul", description: p.description,
-        name: p.date, city: p.technicsName, backgroundColor:"true", pay:"true"}]
+        var a = this.state.products.map((p) =>
+            ({
+                link: "test_link", title: "titul",
+                subtitle: "podtitul", description: p.description,
+                name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true"
+            })
         )
-
-        var test = [{link:"test_link", title:"titul",
-            subtitle:"podtitul", description:"popisok",
-            name:"Menecko", city: a.length, backgroundColor:"true", pay:"true"}]
         this.setState({events: a})
     }
 
@@ -106,7 +103,7 @@ class Search extends React.Component {
                     link: "/event/" + event.id,
                 };
             }
-        ).sort((a, b) => sortTiles(a, b))
+        )  //.sort((a, b) => sortTiles(a, b))
     }
 
     mapToGrid(array) {
