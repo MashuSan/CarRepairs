@@ -14,7 +14,6 @@ export class AboutUsPrivateSection extends React.Component {
                     <TextField label="Popis závady"
                                multiline
                                name="description"
-                               //value={this.props.description}
                                onChange={e => this.props.updateInput(e)}
                     />
                 </Grid>
@@ -59,16 +58,6 @@ export class OurVissionPrivateSection extends React.Component {
 }
 
 export class ContactPrivateSection extends React.Component {
-    /*getCurrentDate(separator='/'){
-
-        let newDate = new Date()
-        let date = newDate.getDate();
-        let month = newDate.getMonth() + 1;
-        let year = newDate.getFullYear();
-        
-        return `${date<10?`0${date}`:`${date}`}${separator}${month<10?`0${month}`:`${month}`}${separator}${year}`
-    }*/
-
     render() {
         return (
         <div>
@@ -76,39 +65,26 @@ export class ContactPrivateSection extends React.Component {
                 <Grid item sm={3} xs={12} />
                 <Grid item sm={6} xs={12}>
                     <TextField label="Najazdené kilometre"
-                               //value={this.props.kmStatus}
                                name={"kmStatus"}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
                 <Grid item sm={3} xs={12} />
 
-                {/*<Grid item sm={3} xs={12} />
-                <Grid item sm={3} xs={12}>
-                    <TextField label={"Dátum"}
-                               //defaultValue={this.getCurrentDate()} 
-                               //value={this.props.date}
-                               name={"date"}
-                               onChange={(e) => this.props.updateInput(e)}/>
-                </Grid>
-        <Grid item sm={6} xs={12} />*/}
                 <Grid item sm={3} xs={12} />
                 <Grid item sm={3} xs={12}>
                     <TextField label="Technik"
-                               //value={this.props.technicsName}
                                name={"technicsName"}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
                 <Grid item sm={3} xs={12} />
             </Grid>
-            {/*---------------------------------------------------------------------------------------------------*/}
- 
+
             <div>
                 <DayPicker
                 onDayClick={this.props.handleDayClick}
                 />
             </div>
 
-            {/*---------------------------------------------------------------------------------------------------*/}
         </div>)
     }
 }

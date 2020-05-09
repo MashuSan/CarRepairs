@@ -86,8 +86,8 @@ class CompanyAccount extends React.Component {
         this.setState({[e.target.name]: e.target.value});
     };
     handleDayClick = day => {
+        day = day.toLocaleDateString();
         this.setState({ date: day });
-        //this.state.date.toLocaleDateString()
     };
 }
 export default withRouter(CompanyAccount);
