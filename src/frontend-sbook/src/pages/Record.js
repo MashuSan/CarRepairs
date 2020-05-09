@@ -43,6 +43,7 @@ class CompanyAccount extends React.Component {
 
     render() {
         return (<main>
+            <h1>Vytvor záznam</h1>
             <Card className="profileBase">
                 <AboutUsPrivateSection
                     updateInput={this.updateInput}
@@ -59,7 +60,8 @@ class CompanyAccount extends React.Component {
                     onChangeNewQuestion={e => this.setState({newMaterial: e.target.value})}
                     addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
                 <ContactPrivateSection
-                    updateInput={this.updateInput}/>
+                    updateInput={this.updateInput}
+                    handleDayClick={this.handleDayClick}/>
                 <SavePrivateSection
                     pushToHistory={(path) => this.props.history.push(path)}
                     databaseId={""}
@@ -82,6 +84,10 @@ class CompanyAccount extends React.Component {
     };
     updateInput = e => {
         this.setState({[e.target.name]: e.target.value});
+    };
+    handleDayClick = day => {
+        day = day.toLocaleDateString();
+        this.setState({ date: day });
     };
 }
 export default withRouter(CompanyAccount);
