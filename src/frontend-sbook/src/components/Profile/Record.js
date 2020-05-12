@@ -28,25 +28,37 @@ export class OurVissionPrivateSection extends React.Component {
         return (
             <div style={{marginTop: "2em"}}>
                 <Grid item>
-
                     <label>
                         {
                             this.props.materials.map((question, index) => {
-                                return <div><input
+                                return <div>
+                                    <input size="15"
                                     type="text"
                                     placeholder=""
-                                    onChange={(e) => this.props.onChangeQuestion(e, index)}
-                                    value={question}
-                                />
+                                    onChange={(e) => this.props.onChangeMaterial(e, index)}
+                                    value={question.material}
+                                    />
+                                    <input size="5" style={{marginLeft: "1em"}}
+                                    type="text"
+                                    placeholder=""
+                                    onChange={(e) => this.props.onChangePrice(e, index)}
+                                    value={question.price} />
                                     <Button onClick={this.props.deleteQuestion(index)}>x</Button></div>
                             })
                         }
-                        <input
+                        <input size="15"
                             type="text"
                             name="newMotivationLetterQuestion"
-                            placeholder="material - price"
-                            onChange={this.props.onChangeNewQuestion}
+                            placeholder="material"
+                            onChange={this.props.onNewChangeMaterial}
                             value={this.props.newMaterial}
+                        />
+                        <input size="5" style={{marginLeft: "1em"}}
+                            type="text"
+                            name="newMotivationLetterQuestion"
+                            placeholder="price"
+                            onChange={this.props.onNewChangePrice}
+                            value={this.props.newPrice}
                         />
                         <Button onClick={this.props.addQuestion}>
                             +

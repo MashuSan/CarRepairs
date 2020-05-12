@@ -10,16 +10,16 @@ export class Service {
     spz: string;
 
     @Column()
-    date: string; //TODO: Date
+    date: string;
 
     @Column()
-    kmStatus: number;
+    kmStatus: string;
 
     @Column()
     description: string;
 
-    @Column()
-    materials: string;
+    @Column("json")
+    materials: { material: string, price: number }[];
 
     @Column()
     technicsName: string;

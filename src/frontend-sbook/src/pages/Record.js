@@ -15,6 +15,7 @@ class CompanyAccount extends React.Component {
         super(props);
         this.state = {
             newMaterial: "",
+            newPrice: "",
             materials: []
         };
     }
@@ -52,13 +53,12 @@ class CompanyAccount extends React.Component {
                 <OurVissionPrivateSection
                     materials={this.state.materials}
                     deleteQuestion={(index) => this.deleteMotivationLetterQuestion(index)}
-                    onChangeQuestion={(e, index) => {
-                        var materials = this.state.materials;
-                        materials[index] = e.target.value;
-                        this.setState({materials: materials});
-                    }}
+                    onChangeMaterial={(e, index) => this.onChangeMaterial(e, index)}
+                    onChangePrice={(e, index) => this.onChangePrice(e, index)}
                     newMaterial={this.state.newMaterial}
-                    onChangeNewQuestion={e => this.setState({newMaterial: e.target.value})}
+                    newPrice={this.state.newPrice}
+                    onNewChangeMaterial={e => this.setState({newMaterial: e.target.value})}
+                    onNewChangePrice={e => this.setState({newPrice: e.target.value})}
                     addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
                 <ContactPrivateSection
                     updateInput={this.updateInput}
@@ -72,11 +72,32 @@ class CompanyAccount extends React.Component {
         </main>)
     }
 
+    onChangeMaterial = (e, index) => {
+        let materials = this.state.materials;
+            materials[index] = {
+                material: e.target.value,
+                price: materials[index].price
+            };
+            this.setState({materials: materials});
+    }
+
+    onChangePrice = (e, index) => {
+        let materials = this.state.materials;
+            materials[index] = {
+                material: materials[index].material,
+                price: e.target.value
+            };
+            this.setState({materials: materials});
+    }
 
     addMotivationLetterQuestion = (e) => {
         var materials = this.state.materials;
-        materials.push(this.state.newMaterial);
-        this.setState({materials: materials, newMaterial: ""});
+        var item = {
+            material: this.state.newMaterial,
+            price: this.state.newPrice
+        }
+        materials.push(item);
+        this.setState({materials: materials, newMaterial: "", newPrice: ""});
     };
     deleteMotivationLetterQuestion = (index) => (e) => {
         var materials = this.state.materials;
