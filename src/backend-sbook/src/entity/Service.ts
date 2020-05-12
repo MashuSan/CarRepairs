@@ -7,6 +7,9 @@ export class Service {
     id: number;
 
     @Column()
+    spz: string;
+
+    @Column()
     date: string; //TODO: Date
 
     @Column()

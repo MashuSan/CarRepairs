@@ -31,6 +31,7 @@ class CompanyAccount extends React.Component {
             },
             body: JSON.stringify({
                 date: this.state.date,
+                spz: this.state.spz,
                 kmStatus: this.state.kmStatus,
                 description: this.state.description,
                 materials: this.state.materials,

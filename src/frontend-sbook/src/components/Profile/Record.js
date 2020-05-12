@@ -62,13 +62,22 @@ export class ContactPrivateSection extends React.Component {
         return (
         <div>
             <Grid container xs={12}>
+
                 <Grid item sm={3} xs={12} />
-                <Grid item sm={6} xs={12}>
+                <Grid item sm={3} xs={12}>
+                    <TextField label="ŠPZ"
+                               name={"spz"}
+                               onChange={(e) => this.props.updateInput(e)}/>
+                </Grid>
+                <Grid item sm={6} xs={12} />
+
+                <Grid item sm={3} xs={12} />
+                <Grid item sm={3} xs={12}>
                     <TextField label="Najazdené kilometre"
                                name={"kmStatus"}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
-                <Grid item sm={3} xs={12} />
+                <Grid item sm={6} xs={12} />
 
                 <Grid item sm={3} xs={12} />
                 <Grid item sm={3} xs={12}>
@@ -76,7 +85,8 @@ export class ContactPrivateSection extends React.Component {
                                name={"technicsName"}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
-                <Grid item sm={3} xs={12} />
+                <Grid item sm={6} xs={12} />
+
             </Grid>
 
             <div>
