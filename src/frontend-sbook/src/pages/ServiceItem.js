@@ -10,7 +10,8 @@ export class Item extends React.Component{
                 <div className="serviceCol">{ this.props.date }</div>
                 <div className="serviceCol">{ this.props.kmStatus }</div>
                 <div className="serviceCol">{ this.props.description }</div>
-                <div className="serviceCol">{ this.props.materials }</div>
+                { this.props.materials.map((m) => <div className="serviceCol">{ m.material } {" "} { m.price} </div>)}
+                
                 <div className="serviceCol">{ this.props.technicsName }</div>
                 <p className="newLine"></p>
             </div>
