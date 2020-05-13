@@ -64,7 +64,8 @@ function RecordDetail(props) {
                 <span><h3>SPZ: </h3>{props.spz}</span>
             </div>
             <p>{props.description}</p>
-            <p>{props.materials}</p>
+            { props.materials.map((m) => <p>{ m.material } {" "} { m.price } </p>)}
+            
         </div>
 
     </Card>);
