@@ -10,7 +10,10 @@ import {
     faList,
     faMapMarkerAlt,
     faHashtag,
-    faDollarSign
+    faDollarSign,
+    faCalendar,
+    faCalendarAlt,
+    faCalendarCheck
 } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 import Toggle from '../components/Toggle';
@@ -34,7 +37,8 @@ class Search extends React.Component {
             events: [],
             // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
             tab: this.props.match.params.what ? this.props.match.params.what : "events",
-            tileMode: true
+            tileMode: true,
+            currentSearch: "y"
         }
     }
 
@@ -59,8 +63,28 @@ class Search extends React.Component {
 
     filter(array, string) {
         return array.filter(item => {
-            if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
-            return false;
+            switch(this.state.currentSearch){
+                case "spz":
+                    if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                case "date":
+                    if (item.date.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                case "tech":
+                    if (item.technicsName.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                case "desc":
+                    if (item.description.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                default:
+                    if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;                    
+            }
+            
         })
     }
 
@@ -123,30 +147,32 @@ class Search extends React.Component {
             <br/>
             <section>
                 <Dropdown
-                    icon={faMapMarkerAlt}
-                    options={{
-                        "": "Vybrat město",
-                        Brno: "Brno",
-                        Praha: "Praha"
-                    }}
-                    onChange={(value) => console.log(value)}
-                    style={{margin: "0em .5em .5em 0em"}}
+                //    icon={faMapMarkerAlt}
+                //    options={{
+                //        "": "Vybrat město",
+                //        Brno: "Brno",
+                //        Praha: "Praha"
+                //    }}
+                //    onChange={(value) => console.log(value)}
+                //    style={{margin: "0em .5em .5em 0em"}}
                 />
 
                 <Dropdown
                     icon={faHashtag}
                     options={{
-                        "": "Vybrat kategorii",
-                        "x": "Vzdělávání",
-                        "y": "Biologie",
+                        "": "Vybrať kategoriu",
+                        "spz": "ŠPZ",
+                        "date": "Dátum",
+                        "tech": "Meno technika",
+                        "desc": "Popis"
                     }}
-                    onChange={(value) => console.log(value)}
+                    onChange={(value) => this.setState({currentSearch: value})}
                     style={{margin: "0em .5em .5em 0em"}}
                 />
 
                 <Toggle
-                    text="Placená"
-                    icon={faDollarSign}
+                    text="Len nasledujúce dni"
+                    icon={faCalendarCheck}
                     style={{margin: "0em"}}
                     onChange={(value) => console.log(value)}
                 />
@@ -156,7 +182,7 @@ class Search extends React.Component {
                 {this.mapToGrid(this.state.tab === "events" ? this.mapEvents() : [])}
             </Grid>
 
-            <ItemList></ItemList>
+            
         </main>
     }
 }
