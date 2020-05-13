@@ -34,8 +34,7 @@ class Search extends React.Component {
             events: [],
             // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
             tab: this.props.match.params.what ? this.props.match.params.what : "events",
-            tileMode: true,
-            products: []
+            tileMode: true
         }
     }
 
@@ -55,21 +54,12 @@ class Search extends React.Component {
 
     async componentDidMount() {
         const data = await this.fetchData();
-        this.setState({products: data});
-        var a = this.state.products.map((p) =>
-            ({
-                link: "test_link", title: p.spz,
-                subtitle: "podtitul", description: p.description,
-                name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true",
-                id: p.id
-            })
-        )
-        this.setState({events: a})
+        this.setState({events: data});
     }
 
     filter(array, string) {
         return array.filter(item => {
-            if (item.name.toLowerCase().includes(string.toLowerCase())) return true;
+            if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
             return false;
         })
     }
@@ -79,29 +69,14 @@ class Search extends React.Component {
 
         var i = 20;
         return this.filter(this.state.events, this.state.search).map(event => {
-                const subtitleString = (event.day + "." + event.month + "." + event.year) +
-                    (event.setTime ? (" (" +
-                            event.hourStart + ":" + (event.minStart < 10 ? "0" + event.minStart : event.minStart) + " - " +
-                            event.hourEnd + ":" + (event.minEnd < 10 ? "0" + event.minEnd : event.minEnd)
-                            + ")") : ""
-                    );
                 return {
-                    title: event.title,
-                    subtitle:event.subtitle,
-                    setTime: event.setTime,
-                    date: event.name,
-
-                    hourEnd: event.hourEnd,
-                    hourStart: event.hourStart,
-                    minEnd: event.minEnd,
-                    minStart: event.minStart,
-
-                    day: event.day,
-                    month: event.month,
-                    year: event.year,
-
-                    city: event.city,
+                    if: event.id,
+                    date: event.date,
+                    kmStatus: event.kmStatus,
                     description: event.description,
+                    materials: event.materials,
+                    technicsName: event.technicsName,
+                    spz: event.spz,
                     link: "/event/" + event.id,
                 };
             }
@@ -110,7 +85,7 @@ class Search extends React.Component {
 
     mapToGrid(array) {
         return array.map(item => <Grid item xs={12}>
-                <Link to={item.link} className="notA">
+                <Link to={item.link} className="notA" target={"blank"}>
                     <SearchRow {...item}/>
                 </Link>
             </Grid>
@@ -119,7 +94,7 @@ class Search extends React.Component {
 
     render() {
         return <main id="searchMain">
-            <h1>Databáze</h1>
+            <h1>Prehliadka opráv</h1>
             <Input
                 onChange={(e) => this.setState({search: e.target.value})}
                 label="Search"
@@ -127,7 +102,7 @@ class Search extends React.Component {
                 style={{padding: ".5em"}}
                 className="searchBar"
                 type="text"
-                placeholder="Hledej stáže, akce a společnosti..."
+                placeholder="Filter (funguje na spz)"
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton onClick={(e) => {
