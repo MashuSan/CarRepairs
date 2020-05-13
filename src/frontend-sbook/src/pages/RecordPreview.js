@@ -63,7 +63,9 @@ function RecordDetail(props) {
                 <span></span>
                 <span><h3>SPZ: </h3>{props.spz}</span>
             </div>
+            <span><h3>Popis závady: </h3></span>
             <p>{props.description}</p>
+            <span><h3>Použité materiály: </h3></span>
             { props.materials.map((m) => <p>{ m.material } {" "} { m.price } </p>)}
             
         </div>
