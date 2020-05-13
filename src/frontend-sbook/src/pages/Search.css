@@ -14,5 +14,6 @@
 #searchMain .tabLabel{padding-left:.5em}
 
 #searchMain{
-    max-width: 1200px;
+    max-width: 1100px;
+    margin: auto;
 }
