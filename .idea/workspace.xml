@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c0a35210-8723-489b-9573-5a9ec06af736" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend-sbook/src/pages/RecordPreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend-sbook/src/pages/RecordPreview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend-sbook/src/services/downloadRecordData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend-sbook/src/services/downloadRecordData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend-sbook/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend-sbook/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend-sbook/src/components/SearchTile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend-sbook/src/components/SearchTile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend-sbook/src/pages/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend-sbook/src/pages/Search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +110,7 @@
       <workItem from="1589185552662" duration="16000" />
       <workItem from="1589188640840" duration="1414000" />
       <workItem from="1589362716444" duration="2605000" />
-      <workItem from="1589376266530" duration="6816000" />
+      <workItem from="1589376266530" duration="9326000" />
     </task>
     <task id="LOCAL-00001" summary="React init from Interns">
       <created>1588165197906</created>

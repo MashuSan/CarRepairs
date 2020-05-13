@@ -30,10 +30,10 @@ class Header extends React.Component {
 
                 <div className="links">
                     <Link to="/search/events" className="notA headerLink">
-                        Akce
+                        Zobraziť opravy
                     </Link>
                     <Link to="/createService" className="notA headerLink">
-                        Vytvořit Záznam
+                        Vytvoriť záznam
                     </Link>
                 </div>
 
