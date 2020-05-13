@@ -40,6 +40,7 @@ class CompanyAccount extends React.Component {
             })
         }
         fetch('http://localhost:5000/services', requestOptions)
+        window.location.reload(false);
         event.preventDefault()
     };
 
@@ -62,7 +63,8 @@ class CompanyAccount extends React.Component {
                     addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
                 <ContactPrivateSection
                     updateInput={this.updateInput}
-                    handleDayClick={this.handleDayClick}/>
+                    handleDayClick={this.handleDayClick}
+                    date={this.state.date}/>
                 <SavePrivateSection
                     pushToHistory={(path) => this.props.history.push(path)}
                     databaseId={""}

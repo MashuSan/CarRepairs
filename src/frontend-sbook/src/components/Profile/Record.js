@@ -105,6 +105,11 @@ export class ContactPrivateSection extends React.Component {
                 <DayPicker
                 onDayClick={this.props.handleDayClick}
                 />
+                {this.props.date ? (
+                    <p>{this.props.date}</p>
+                ) : (
+                    <p>Please select a date.</p>
+        )}
             </div>
 
         </div>)
