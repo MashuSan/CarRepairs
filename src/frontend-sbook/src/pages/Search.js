@@ -110,7 +110,7 @@ class Search extends React.Component {
 
     mapToGrid(array) {
         return array.map(item => <Grid item xs={12}>
-                <Link to={item.link} className="notA">
+                <Link to={item.link} className="notA" target={"blank"}>
                     <SearchRow {...item}/>
                 </Link>
             </Grid>
@@ -127,7 +127,7 @@ class Search extends React.Component {
                 style={{padding: ".5em"}}
                 className="searchBar"
                 type="text"
-                placeholder="Hledej stáže, akce a společnosti..."
+                placeholder="Filter (funguje na dátum)"
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton onClick={(e) => {

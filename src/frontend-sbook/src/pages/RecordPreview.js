@@ -26,29 +26,31 @@ class RecordView extends React.Component {
 
     render() {
         var record = this.state.record;
+        console.log("record in render:");
+        console.log(record);
         return (<main>
             <If if={record}>
                 <RecordDetail
                     pushToHistory={(path) => this.props.history.push(path)}
-                    adress={record.adress}
-                    city={record.city}
-                    companyName={record.companyName}
-                    day={record.day}
-                    description={<TextComponent text={record.description}/>}
-                    hourEnd={record.hourEnd}
-                    hourStart={record.hourStart}
-                    imgSrc={this.state.record.imgUrl ? this.state.record.imgUrl : "https://picsum.photos/800/800"}
-                    id={record.id}
-                    minEnd={record.minEnd}
-                    minStart={record.minStart}
-                    month={record.month}
-                    publicView={record.publicView}
-                    name={record.name}
-                    setTime={record.setTime}
-                    year={record.year}
+                    adress={"adresa"}
+                    city={"mesto"}
+                    companyName={"nazov spolocnosti"}
+                    day={"den"}
+                    //description={<TextComponent text={record.description}/>}
+                    hourEnd={"hodina koniec"}
+                    hourStart={"hodina zaciatok"}
+                    //imgSrc={this.state.record.imgUrl ? this.state.record.imgUrl : "https://picsum.photos/800/800"}
+                    id={"id"}
+                    minEnd={"minuta koniec"}
+                    minStart={"minuta zaciatok"}
+                    month={"month"}
+                    publicView={"public view"}
+                    name={"meno"}
+                    setTime={"set time"}
+                    year={"rok"}
 
 
-                    location={record.city}
+                    location={"lokacia - mesto"}
                     event={record}
                     buttonCondition={1}/>
             </If>
