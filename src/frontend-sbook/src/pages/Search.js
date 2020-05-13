@@ -58,7 +58,7 @@ class Search extends React.Component {
         this.setState({products: data});
         var a = this.state.products.map((p) =>
             ({
-                link: "test_link", title: "DFSFSDFS",
+                link: "test_link", title: p.spz,
                 subtitle: "podtitul", description: p.description,
                 name: p.date, city: p.technicsName, backgroundColor: "true", pay: "true",
                 id: p.id

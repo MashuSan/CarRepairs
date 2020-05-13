@@ -9,7 +9,7 @@ export function SearchRow(props) {
     return (<Card className="searchRow">
         <div className="searchRowContentWrapper" style={props.backgroundPinky ? {backgroundColor: 'pink'} : {}}>
             <div className="searchRowHeader">
-                <div className="searchRowTitle">{props.date}<span>Tu bude uvedena značka auta</span></div>
+                <div className="searchRowTitle">{props.date}<span>{props.title}</span></div>
                 <div className="searchRowLocation">
                     <If if={props.pay}>
                     <span className="searchRowPay"><Typography color="primary"><FontAwesomeIcon style={{fontSize: "1.3em"}}
