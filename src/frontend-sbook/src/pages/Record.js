@@ -40,7 +40,7 @@ class CompanyAccount extends React.Component {
             })
         }
         fetch('http://localhost:5000/services', requestOptions)
-        window.location.reload(false);
+        //window.location.reload(false);
         event.preventDefault()
     };
 
