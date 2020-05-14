@@ -38,7 +38,8 @@ class Search extends React.Component {
             // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
             tab: this.props.match.params.what ? this.props.match.params.what : "events",
             tileMode: true,
-            currentSearch: "y"
+            currentSearch: "spz",
+            filterText: "Filtrovat podla "
         }
     }
 
@@ -68,16 +69,16 @@ class Search extends React.Component {
                     if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
-                case "date":
+                case "datum":
                     
                     if (item.date.replace(' ', '').replace(' ', '').toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
-                case "tech":
+                case "technik":
                     if (item.technicsName.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
-                case "desc":
+                case "popis":
                     if (item.description.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
@@ -127,7 +128,7 @@ class Search extends React.Component {
                 style={{padding: ".5em"}}
                 className="searchBar"
                 type="text"
-                placeholder="Filter"
+                placeholder= {this.state.filterText + this.state.currentSearch}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton onClick={(e) => {
@@ -141,22 +142,16 @@ class Search extends React.Component {
             /><br/>
             <br/>
 
-            <Button onClick={() => this.setState({tileMode: !this.state.tileMode})}>
-                <FontAwesomeIcon icon={this.state.tileMode ? faThLarge : faList}/>
-            </Button>
-
             <br/>
             <section>
-                
-
                 <Dropdown
                     icon={faHashtag}
                     options={{
-                        "": "Vybrať kategoriu",
+                        "": "Filtrovať podľa",
                         "spz": "ŠPZ",
-                        "date": "Dátum",
-                        "tech": "Meno technika",
-                        "desc": "Popis"
+                        "datum": "Dátum",
+                        "technik": "Meno technika",
+                        "popis": "Popis"
                     }}
                     onChange={(value) => this.setState({currentSearch: value})}
                     style={{margin: "0em .5em .5em 0em"}}
