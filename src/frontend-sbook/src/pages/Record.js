@@ -39,8 +39,8 @@ class CompanyAccount extends React.Component {
                 technicsName: this.state.technicsName
             })
         }
-        fetch('http://localhost:5000/services', requestOptions)
-        //window.location.reload(false);
+        await fetch('http://localhost:5000/services', requestOptions)
+        window.location.reload();
         event.preventDefault()
     };
 

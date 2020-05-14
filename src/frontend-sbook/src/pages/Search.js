@@ -10,7 +10,10 @@ import {
     faList,
     faMapMarkerAlt,
     faHashtag,
-    faDollarSign
+    faDollarSign,
+    faCalendar,
+    faCalendarAlt,
+    faCalendarCheck
 } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 import Toggle from '../components/Toggle';
@@ -34,7 +37,8 @@ class Search extends React.Component {
             events: [],
             // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
             tab: this.props.match.params.what ? this.props.match.params.what : "events",
-            tileMode: true
+            tileMode: true,
+            currentSearch: "SPZ"
         }
     }
 
@@ -59,8 +63,29 @@ class Search extends React.Component {
 
     filter(array, string) {
         return array.filter(item => {
-            if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
-            return false;
+            switch(this.state.currentSearch){
+                case "SPZ":
+                    if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                case "Dátum":
+                    
+                    if (item.date.replace(' ', '').replace(' ', '').toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                case "Technik":
+                    if (item.technicsName.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                case "Popis":
+                    if (item.description.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;
+                    
+                default:
+                    if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
+                    return false;                    
+            }
+            
         })
     }
 
@@ -102,7 +127,7 @@ class Search extends React.Component {
                 style={{padding: ".5em"}}
                 className="searchBar"
                 type="text"
-                placeholder="Filter (funguje na spz)"
+                placeholder={this.state.currentSearch}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton onClick={(e) => {
@@ -116,47 +141,39 @@ class Search extends React.Component {
             /><br/>
             <br/>
 
-            <Button onClick={() => this.setState({tileMode: !this.state.tileMode})}>
-                <FontAwesomeIcon icon={this.state.tileMode ? faThLarge : faList}/>
-            </Button>
-
             <br/>
             <section>
                 <Dropdown
-                    icon={faMapMarkerAlt}
-                    options={{
-                        "": "Vybrat město",
-                        Brno: "Brno",
-                        Praha: "Praha"
-                    }}
-                    onChange={(value) => console.log(value)}
-                    style={{margin: "0em .5em .5em 0em"}}
-                />
-
-                <Dropdown
                     icon={faHashtag}
                     options={{
-                        "": "Vybrat kategorii",
-                        "x": "Vzdělávání",
-                        "y": "Biologie",
+                        "": "Filtrovať podľa",
+                        "SPZ": "ŠPZ",
+                        "Dátum": "Dátum",
+                        "Technik": "Meno technika",
+                        "Popis": "Popis"
                     }}
-                    onChange={(value) => console.log(value)}
+                    onChange={(value) => 
+                        {
+                        if (value == "")
+                        {
+                            this.setState({currentSearch: "SPZ"})
+                        } 
+                        else{
+                            this.setState({currentSearch: value})
+                        } 
+                        } 
+                    }
                     style={{margin: "0em .5em .5em 0em"}}
                 />
 
-                <Toggle
-                    text="Placená"
-                    icon={faDollarSign}
-                    style={{margin: "0em"}}
-                    onChange={(value) => console.log(value)}
-                />
+                
             </section>
                           
             <Grid container spacing={3} id="searchResults">
                 {this.mapToGrid(this.state.tab === "events" ? this.mapEvents() : [])}
             </Grid>
 
-            <ItemList></ItemList>
+            
         </main>
     }
 }
