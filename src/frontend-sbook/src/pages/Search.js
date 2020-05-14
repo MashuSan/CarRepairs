@@ -38,8 +38,7 @@ class Search extends React.Component {
             // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
             tab: this.props.match.params.what ? this.props.match.params.what : "events",
             tileMode: true,
-            currentSearch: "spz",
-            filterText: "Filtrovat podla "
+            currentSearch: "SPZ"
         }
     }
 
@@ -65,20 +64,20 @@ class Search extends React.Component {
     filter(array, string) {
         return array.filter(item => {
             switch(this.state.currentSearch){
-                case "spz":
+                case "SPZ":
                     if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
-                case "datum":
+                case "Dátum":
                     
                     if (item.date.replace(' ', '').replace(' ', '').toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
-                case "technik":
+                case "Technik":
                     if (item.technicsName.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
-                case "popis":
+                case "Popis":
                     if (item.description.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
@@ -128,7 +127,7 @@ class Search extends React.Component {
                 style={{padding: ".5em"}}
                 className="searchBar"
                 type="text"
-                placeholder= {this.state.filterText + this.state.currentSearch}
+                placeholder={this.state.currentSearch}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton onClick={(e) => {
@@ -148,12 +147,22 @@ class Search extends React.Component {
                     icon={faHashtag}
                     options={{
                         "": "Filtrovať podľa",
-                        "spz": "ŠPZ",
-                        "datum": "Dátum",
-                        "technik": "Meno technika",
-                        "popis": "Popis"
+                        "SPZ": "ŠPZ",
+                        "Dátum": "Dátum",
+                        "Technik": "Meno technika",
+                        "Popis": "Popis"
                     }}
-                    onChange={(value) => this.setState({currentSearch: value})}
+                    onChange={(value) => 
+                        {
+                        if (value == "")
+                        {
+                            this.setState({currentSearch: "SPZ"})
+                        } 
+                        else{
+                            this.setState({currentSearch: value})
+                        } 
+                        } 
+                    }
                     style={{margin: "0em .5em .5em 0em"}}
                 />
 
