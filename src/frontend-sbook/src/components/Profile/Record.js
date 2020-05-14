@@ -11,7 +11,8 @@ export class AboutUsPrivateSection extends React.Component {
             <Grid container xs={12}>
                 <Grid item sm={3} xs={12} />
                 <Grid item sm={6} xs={12}>
-                    <TextField label="Popis závady"
+                    <TextField id="something"
+                               label="Popis závady"
                                multiline
                                name="description"
                                onChange={e => this.props.updateInput(e)}
@@ -49,14 +50,14 @@ export class OurVissionPrivateSection extends React.Component {
                         <input size="15"
                             type="text"
                             name="newMotivationLetterQuestion"
-                            placeholder="material"
+                            placeholder="Materiál"
                             onChange={this.props.onNewChangeMaterial}
                             value={this.props.newMaterial}
                         />
                         <input size="5" style={{marginLeft: "1em"}}
                             type="text"
                             name="newMotivationLetterQuestion"
-                            placeholder="price"
+                            placeholder="Cena"
                             onChange={this.props.onNewChangePrice}
                             value={this.props.newPrice}
                         />
@@ -108,7 +109,7 @@ export class ContactPrivateSection extends React.Component {
                 {this.props.date ? (
                     <p>{this.props.date}</p>
                 ) : (
-                    <p>Please select a date.</p>
+                    <p>Zvoľte dátum.</p>
         )}
             </div>
 
