@@ -69,7 +69,8 @@ class Search extends React.Component {
                     return false;
                     
                 case "date":
-                    if (item.date.toLowerCase().includes(string.toLowerCase())) return true;
+                    
+                    if (item.date.replace(' ', '').replace(' ', '').toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
                 case "tech":
@@ -126,7 +127,7 @@ class Search extends React.Component {
                 style={{padding: ".5em"}}
                 className="searchBar"
                 type="text"
-                placeholder="Filter (funguje na spz)"
+                placeholder="Filter"
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton onClick={(e) => {
@@ -146,16 +147,7 @@ class Search extends React.Component {
 
             <br/>
             <section>
-                <Dropdown
-                //    icon={faMapMarkerAlt}
-                //    options={{
-                //        "": "Vybrat město",
-                //        Brno: "Brno",
-                //        Praha: "Praha"
-                //    }}
-                //    onChange={(value) => console.log(value)}
-                //    style={{margin: "0em .5em .5em 0em"}}
-                />
+                
 
                 <Dropdown
                     icon={faHashtag}
@@ -170,12 +162,7 @@ class Search extends React.Component {
                     style={{margin: "0em .5em .5em 0em"}}
                 />
 
-                <Toggle
-                    text="Len nasledujúce dni"
-                    icon={faCalendarCheck}
-                    style={{margin: "0em"}}
-                    onChange={(value) => console.log(value)}
-                />
+                
             </section>
                           
             <Grid container spacing={3} id="searchResults">
