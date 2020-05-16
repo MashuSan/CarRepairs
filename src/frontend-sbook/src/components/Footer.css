@@ -4,3 +4,7 @@ footer{
     padding:2em;
     text-align: center;
 }
+
+main{
+    min-height: 36.45em;
+}
