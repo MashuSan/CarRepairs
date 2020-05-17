@@ -17,7 +17,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 import Toggle from '../components/Toggle';
-import ItemList from './Getter'
 
 
 ////////////// Zbyva jen smazat mapovani studentu
