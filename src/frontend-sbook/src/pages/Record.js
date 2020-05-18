@@ -1,13 +1,9 @@
 import React from "react";
-import {
-    Card,
-
-} from "@material-ui/core";
 import {withRouter} from 'react-router-dom';
 import "./Record.css";
 import {
-    AboutUsPrivateSection, ContactPrivateSection,
-    OurVissionPrivateSection, SavePrivateSection
+    DescriptionSection, MaterialsSection,
+    BasicInfoSection, SaveSection
 } from "../components/Profile/Record";
 
 class CompanyAccount extends React.Component {
@@ -18,9 +14,6 @@ class CompanyAccount extends React.Component {
             newPrice: "",
             materials: []
         };
-    }
-
-    async componentDidMount() {
     }
 
     saveData = async (event) => {
@@ -47,24 +40,24 @@ class CompanyAccount extends React.Component {
     render() {
         return (<main>
             <h1>Vytvor záznam</h1>
-            <AboutUsPrivateSection
+            <DescriptionSection
                 updateInput={this.updateInput}
             />
-            <OurVissionPrivateSection
+            <MaterialsSection
                 materials={this.state.materials}
-                deleteQuestion={(index) => this.deleteMotivationLetterQuestion(index)}
+                deleteEntry={(index) => this.deleteMatPriEntry(index)}
                 onChangeMaterial={(e, index) => this.onChangeMaterial(e, index)}
                 onChangePrice={(e, index) => this.onChangePrice(e, index)}
                 newMaterial={this.state.newMaterial}
                 newPrice={this.state.newPrice}
                 onNewChangeMaterial={e => this.setState({newMaterial: e.target.value})}
                 onNewChangePrice={e => this.setState({newPrice: e.target.value})}
-                addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
-            <ContactPrivateSection
+                addEntry={(e) => this.addMatPriEntry(e)}/>
+            <BasicInfoSection
                 updateInput={this.updateInput}
                 handleDayClick={this.handleDayClick}
                 date={this.state.date}/>
-            <SavePrivateSection
+            <SaveSection
                 pushToHistory={(path) => this.props.history.push(path)}
                 databaseId={""}
                 saveData={this.saveData}
@@ -90,7 +83,7 @@ class CompanyAccount extends React.Component {
             this.setState({materials: materials});
     }
 
-    addMotivationLetterQuestion = (e) => {
+    addMatPriEntry = (e) => {
         var materials = this.state.materials;
         var item = {
             material: this.state.newMaterial,
@@ -98,18 +91,21 @@ class CompanyAccount extends React.Component {
         }
         materials.push(item);
         this.setState({materials: materials, newMaterial: "", newPrice: ""});
-    };
-    deleteMotivationLetterQuestion = (index) => (e) => {
+    }
+
+    deleteMatPriEntry= (index) => (e) => {
         var materials = this.state.materials;
         materials.splice(index, 1);
         this.setState({materials: materials});
-    };
+    }
+
     updateInput = e => {
         this.setState({[e.target.name]: e.target.value});
-    };
+    }
+
     handleDayClick = day => {
         day = day.toLocaleDateString();
         this.setState({ date: day });
-    };
+    }
 }
 export default withRouter(CompanyAccount);
