@@ -46,14 +46,30 @@ export default withRouter(RecordView);
 
 
 function RecordDetail(props) {
-    return <div>
-        <h1>Detail opravy</h1>
-        <div className={"infoLabel"} title={"Dátum opravy a meno technika"}>
-            <Icon icon={faCalendarDay}/>
-            <span><h3>{props.date}</h3></span>
-            <span></span>
-            <Icon icon={faUserCog}/>
-            <span><h3>{props.technicsName}</h3></span>
+    var price = 0;
+    props.materials.map((m) => price += parseInt(m.price))
+    return (<Card className="internshipDetail">
+        <div className="internshipDetailContent basic-ahref">
+            <h1>Detail opravy</h1>
+            <div className={"infoLabel"} title={"Dátum opravy a meno technika"}>
+                <Icon icon={faCalendarDay}/>
+                <span><h3>{props.date}</h3></span>
+                <span></span>
+                <Icon icon={faUserCog}/>
+                <span><h3>{props.technicsName}</h3></span>
+            </div>
+            <p></p>
+            <div className={"infoLabel"}>
+                <span><h3>Stav km: </h3>{props.kmStatus}</span>
+                <span></span>
+                <span><h3>SPZ: </h3>{props.spz}</span>
+            </div>
+            <span><h3>Popis závady: </h3></span>
+            <p>{props.description}</p>
+            <span><h3>Použité materiály: </h3></span>
+            { props.materials.map((m) => <p>{ m.material } {" - "} { m.price } </p>)}
+            <h4>{ "Celkova cena : " + price + "€"}</h4>
+            
         </div>
         <p></p>
         <div className={"infoLabel"}>
