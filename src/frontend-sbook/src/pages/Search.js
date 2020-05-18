@@ -1,22 +1,14 @@
 import React from 'react';
-import {Grid, Button, Input, InputAdornment, IconButton, Typography} from '@material-ui/core';
+import {Grid, Input, InputAdornment, IconButton} from '@material-ui/core';
 import {Link, withRouter} from 'react-router-dom';
 import {SearchRow} from '../components/SearchTile';
 import './Search.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faSearch,
-    faThLarge,
-    faList,
-    faMapMarkerAlt,
-    faHashtag,
-    faDollarSign,
-    faCalendar,
-    faCalendarAlt,
-    faCalendarCheck
+    faHashtag
 } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
-import Toggle from '../components/Toggle';
 
 
 ////////////// Zbyva jen smazat mapovani studentu
