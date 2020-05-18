@@ -47,6 +47,8 @@ export default withRouter(RecordView);
 
 
 function RecordDetail(props) {
+    var price = 0;
+    props.materials.map((m) => price += parseInt(m.price))
     return (<Card className="internshipDetail">
         <div className="internshipDetailContent basic-ahref">
             <h1>Detail opravy</h1>
@@ -67,6 +69,7 @@ function RecordDetail(props) {
             <p>{props.description}</p>
             <span><h3>Použité materiály: </h3></span>
             { props.materials.map((m) => <p>{ m.material } {" - "} { m.price } </p>)}
+            <h4>{ "Celkova cena : " + price + "€"}</h4>
             
         </div>
 
