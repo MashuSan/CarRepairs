@@ -25,7 +25,7 @@ export function SearchRow(props) {
                             <FontAwesomeIcon style={{marginLeft: "5px", position: "relative", top: "2px"}}
                                              icon={faUserAlt} className="faIcon"
                             /></Typography>
-                        <div style={{width: "80px"}}><span style={{position: "relative", top: "5px"}}>{getName(props)}</span></div>
+                        <div style={{width: "80px", marginRight: "5px", textAlign: "left"}}><span style={{position: "relative", top: "5px"}}>{getName(props)}</span></div>
                     </If>
 
                 </div>
