@@ -1,6 +1,5 @@
 import React from "react";
-import {Card, Typography} from "@material-ui/core";
-import "./Record.css";
+import {Typography} from "@material-ui/core";
 import {withRouter} from 'react-router-dom';
 import {If} from "../components/Lib";
 import './RecordPreview.css';
