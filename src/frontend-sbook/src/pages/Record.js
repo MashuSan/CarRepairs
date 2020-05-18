@@ -47,30 +47,28 @@ class CompanyAccount extends React.Component {
     render() {
         return (<main>
             <h1>Vytvor záznam</h1>
-            <Card className="profileBase">
-                <AboutUsPrivateSection
-                    updateInput={this.updateInput}
-                />
-                <OurVissionPrivateSection
-                    materials={this.state.materials}
-                    deleteQuestion={(index) => this.deleteMotivationLetterQuestion(index)}
-                    onChangeMaterial={(e, index) => this.onChangeMaterial(e, index)}
-                    onChangePrice={(e, index) => this.onChangePrice(e, index)}
-                    newMaterial={this.state.newMaterial}
-                    newPrice={this.state.newPrice}
-                    onNewChangeMaterial={e => this.setState({newMaterial: e.target.value})}
-                    onNewChangePrice={e => this.setState({newPrice: e.target.value})}
-                    addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
-                <ContactPrivateSection
-                    updateInput={this.updateInput}
-                    handleDayClick={this.handleDayClick}
-                    date={this.state.date}/>
-                <SavePrivateSection
-                    pushToHistory={(path) => this.props.history.push(path)}
-                    databaseId={""}
-                    saveData={this.saveData}
-                />
-            </Card>
+            <AboutUsPrivateSection
+                updateInput={this.updateInput}
+            />
+            <OurVissionPrivateSection
+                materials={this.state.materials}
+                deleteQuestion={(index) => this.deleteMotivationLetterQuestion(index)}
+                onChangeMaterial={(e, index) => this.onChangeMaterial(e, index)}
+                onChangePrice={(e, index) => this.onChangePrice(e, index)}
+                newMaterial={this.state.newMaterial}
+                newPrice={this.state.newPrice}
+                onNewChangeMaterial={e => this.setState({newMaterial: e.target.value})}
+                onNewChangePrice={e => this.setState({newPrice: e.target.value})}
+                addQuestion={(e) => this.addMotivationLetterQuestion(e)}/>
+            <ContactPrivateSection
+                updateInput={this.updateInput}
+                handleDayClick={this.handleDayClick}
+                date={this.state.date}/>
+            <SavePrivateSection
+                pushToHistory={(path) => this.props.history.push(path)}
+                databaseId={""}
+                saveData={this.saveData}
+            />
         </main>)
     }
 
