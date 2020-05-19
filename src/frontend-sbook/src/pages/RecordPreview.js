@@ -59,14 +59,14 @@ function RecordDetail(props) {
             </div>
             <p></p>
             <div className={"infoLabel"}>
-                <span><h3>Stav km: </h3>{props.kmStatus}</span>
+                <span><h3>Stav km: </h3>{props.kmStatus}km</span>
                 <span></span>
                 <span><h3>SPZ: </h3>{props.spz}</span>
             </div>
             <span><h3>Popis závady: </h3></span>
             <p>{props.description}</p>
             <span><h3>Použité materiály: </h3></span>
-            { props.materials.map((m) => <p>{ m.material } {" - "} { m.price } </p>)}
+            { props.materials.map((m) => <p>{ m.material } {" - "} { m.price }€ </p>)}
             <h4>{ "Celkova cena : " + price + "€"}</h4>
             
         

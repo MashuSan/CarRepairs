@@ -18,7 +18,7 @@ export function SearchRow(props) {
     return (<Card className="searchRow">
         <div className="searchRowContentWrapper" style={props.backgroundPinky ? {backgroundColor: 'pink'} : {}}>
             <div className="searchRowHeader">
-                <div className="searchRowTitle">{props.spz}<span>{props.date}</span></div>
+                <div className="searchRowTitle"><b>{props.spz}</b><span><i>{props.date}</i></span></div>
                 <div className="searchRowLocation">
                     <If if={props.technicsName}>
                         <Typography color="primary">
