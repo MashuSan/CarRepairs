@@ -54,7 +54,7 @@ export class MaterialsSection extends React.Component {
                         />
                         <input size="5" style={{marginLeft: "1em"}}
                             type="text"
-                            placeholder="Cena €"
+                            placeholder="Cena"
                             onChange={this.props.onNewChangePrice}
                             value={this.props.newPrice}
                         />
