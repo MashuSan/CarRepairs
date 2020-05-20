@@ -105,8 +105,8 @@ export class BasicInfoSection extends React.Component {
 
             <div>
                 <DayPicker onDayClick={this.props.handleDayClick}/>
-                {this.props.dateIN ? (
-                    <p>{this.props.dateIN}</p>
+                {this.props.date ? (
+                    <p>{this.props.date}</p>
                 ) : (
                     <p>Zvoľte dátum.</p>
                 )}

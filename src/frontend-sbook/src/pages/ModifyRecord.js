@@ -75,7 +75,7 @@ class ModifyAccount extends React.Component {
                 spzIN={this.state.spz}
                 kmIN={this.state.km}
                 nameIN={this.state.technicsName}
-                dateIN={this.state.date}
+                date={this.state.date}
                 updateInput={this.updateInput}
                 handleDayClick={this.handleDayClick}
                 date={this.state.date}/>
