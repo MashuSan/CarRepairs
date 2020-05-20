@@ -6,10 +6,9 @@ import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
 import {If} from './Lib';
 
 function getName(props){
-    if (props.technicsName.length > 10){
+    if (props.technicsName.length > 10) {
         return props.technicsName.substring(0, 8) + "..";
-    }
-    else{
+    } else {
         return props.technicsName
     }
 }
@@ -24,8 +23,11 @@ export function SearchRow(props) {
                         <Typography color="primary">
                             <FontAwesomeIcon style={{marginLeft: "5px", position: "relative", top: "2px"}}
                                              icon={faUserAlt} className="faIcon"
-                            /></Typography>
-                        <div style={{width: "80px", marginRight: "5px", textAlign: "left"}}><span style={{position: "relative", top: "5px"}}>{getName(props)}</span></div>
+                            />
+                        </Typography>
+                        <div style={{width: "80px", marginRight: "5px", textAlign: "left"}}>
+                            <span style={{position: "relative", top: "5px"}}>{getName(props)}</span>
+                        </div>
                     </If>
 
                 </div>

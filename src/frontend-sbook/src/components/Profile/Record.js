@@ -122,7 +122,7 @@ export class SaveSection extends React.Component {
         return (
             <div style={{marginTop: "1em", marginBottom: "1em"}}>
                 <Button color="primary" variant="contained"
-                        onClick={this.props.saveData}>Uložit</Button>&nbsp;
+                        onClick={this.props.saveData}>Uložiť</Button>&nbsp;
             </div>
         )
     }

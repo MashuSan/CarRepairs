@@ -6,6 +6,5 @@ export default class Footer extends React.Component{
         return <footer>
             © Servisna kniha 2020
             </footer>
-        
     }
 }

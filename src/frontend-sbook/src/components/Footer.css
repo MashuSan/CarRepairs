@@ -7,6 +7,9 @@ footer{
 
 main{
     min-height: 36.45em;
-    max-width: 1100px;
     margin: auto;
+}
+
+.main-widt-restriction{
+    max-width: 1100px;
 }

@@ -4,10 +4,7 @@ import {Link, withRouter} from 'react-router-dom';
 import {SearchRow} from '../components/SearchTile';
 import './Search.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {
-    faSearch,
-    faHashtag
-} from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faHashtag } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 
 class Search extends React.Component {
@@ -16,9 +13,6 @@ class Search extends React.Component {
         this.state = {
             search: decodeURI(window.location.search.substr(3)),
             events: [],
-            // vymyslet s tlacitkama headeru tab: (this.props && this.props.tab) ? this.prop.tab : "all",
-            tab: this.props.match.params.what ? this.props.match.params.what : "events",
-            tileMode: true,
             currentSearch: "SPZ"
         }
     }
@@ -51,7 +45,8 @@ class Search extends React.Component {
                     
                 case "Dátum":
                     
-                    if (item.date.replace(' ', '').replace(' ', '').toLowerCase().includes(string.toLowerCase())) return true;
+                    if (item.date.replace(' ', '').replace(' ', '')
+                        .toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
                     
                 case "Technik":
@@ -66,13 +61,10 @@ class Search extends React.Component {
                     if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
                     return false;                    
             }
-            
         })
     }
 
     mapEvents() {
-        console.log(this.state);
-
         return this.filter(this.state.events, this.state.search).map(event => {
                 return {
                     if: event.id,
@@ -117,10 +109,9 @@ class Search extends React.Component {
                         </IconButton>
                     </InputAdornment>
                 }
-
-            /><br/>
+            />
             <br/>
-
+            <br/>
             <br/>
             <section>
                 <Dropdown
@@ -132,28 +123,20 @@ class Search extends React.Component {
                         "Technik": "Meno technika",
                         "Popis": "Popis"
                     }}
-                    onChange={(value) => 
-                        {
-                        if (value === "")
-                        {
+                    onChange={(value) => {
+                        if (value === "") {
                             this.setState({currentSearch: "SPZ"})
-                        } 
-                        else{
+                        } else {
                             this.setState({currentSearch: value})
                         } 
-                        } 
-                    }
+                    }}
                     style={{margin: "0em .5em .5em 0em"}}
                 />
-
-                
             </section>
                           
             <Grid container spacing={3} id="searchResults">
-                {this.mapToGrid(this.state.tab === "events" ? this.mapEvents() : [])}
+                {this.mapToGrid(this.mapEvents())}
             </Grid>
-
-            
         </main>
     }
 }

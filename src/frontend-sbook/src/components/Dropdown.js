@@ -6,18 +6,17 @@ import './Dropdown.scss'
 
 export default class Dropdown extends React.Component{
     constructor(){
-        super()
+        super();
         this.state = {
-            down:false,
+            down: false,
             selected:""
         }
     }
 
     render(){
         var rows = [];
-        const x = this.props.options?this.props.options:{
-        }
-        const callback = this.props.onChange?this.props.onChange:()=>{}
+        const x = this.props.options ? this.props.options: {}
+        const callback = this.props.onChange ? this.props.onChange: () => {}
 
         for(const key in x){
             rows.push(<div

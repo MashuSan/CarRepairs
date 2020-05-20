@@ -34,7 +34,7 @@ class RecordView extends React.Component {
 
     render() {
         var record = this.state.record;
-        return (<main>
+        return (<main className={"main-widt-restriction"}>
             <If if={record}>
                 <RecordDetail
                     id={record.id}
@@ -72,7 +72,7 @@ function RecordDetail(props) {
             </div>
             <p></p>
             <div className={"infoLabel"}>
-                <span><h3>Stav km: </h3>{props.kmStatus}km</span>
+                <span><h3>Stav km: </h3>{props.kmStatus} km</span>
                 <span></span>
                 <span><h3>SPZ: </h3>{props.spz}</span>
             </div>
@@ -81,9 +81,6 @@ function RecordDetail(props) {
             <span><h3>Použité materiály: </h3></span>
             { props.materials.map((m) => <p>{ m.material } {" - "} { m.price }€ </p>)}
             <h4>{ "Celkova cena : " + price + "€"}</h4>
-            
-        
-
     </div>);
 }
 
