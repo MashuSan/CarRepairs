@@ -1,10 +1,9 @@
 import React from "react";
 import {Button, Grid, TextField} from "@material-ui/core";
-import "./Record.css"
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
-export class AboutUsPrivateSection extends React.Component {
+export class DescriptionSection extends React.Component {
     render() {
         return (
         <div>
@@ -24,7 +23,7 @@ export class AboutUsPrivateSection extends React.Component {
     }
 }
 
-export class OurVissionPrivateSection extends React.Component {
+export class MaterialsSection extends React.Component {
     render() {
         return (
             <div style={{marginTop: "2em"}}>
@@ -44,24 +43,22 @@ export class OurVissionPrivateSection extends React.Component {
                                     placeholder=""
                                     onChange={(e) => this.props.onChangePrice(e, index)}
                                     value={question.price} />
-                                    <Button onClick={this.props.deleteQuestion(index)}>x</Button></div>
+                                    <Button onClick={this.props.deleteEntry(index)}>x</Button></div>
                             })
                         }
                         <input size="15"
                             type="text"
-                            name="newMotivationLetterQuestion"
                             placeholder="Materiál"
                             onChange={this.props.onNewChangeMaterial}
                             value={this.props.newMaterial}
                         />
                         <input size="5" style={{marginLeft: "1em"}}
                             type="text"
-                            name="newMotivationLetterQuestion"
                             placeholder="Cena"
                             onChange={this.props.onNewChangePrice}
                             value={this.props.newPrice}
                         />
-                        <Button onClick={this.props.addQuestion}>
+                        <Button onClick={this.props.addEntry}>
                             +
                         </Button>
                     </label>
@@ -70,7 +67,7 @@ export class OurVissionPrivateSection extends React.Component {
     }
 }
 
-export class ContactPrivateSection extends React.Component {
+export class BasicInfoSection extends React.Component {
     render() {
         return (
         <div>
@@ -118,7 +115,7 @@ export class ContactPrivateSection extends React.Component {
 }
 
 
-export class SavePrivateSection extends React.Component {
+export class SaveSection extends React.Component {
     render() {
         return (
             <div style={{marginTop: "1em", marginBottom: "1em"}}>
