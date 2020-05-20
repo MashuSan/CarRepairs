@@ -42,8 +42,9 @@ class ModifyAccount extends React.Component {
                 })
             }
             await fetch('http://localhost:5000/services/' + this.state.id, requestOptions)
-            window.location.reload();
             event.preventDefault()
+            window.location.assign('/search')
+
         };
     }
     createTextNode;
