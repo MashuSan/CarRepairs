@@ -200,8 +200,8 @@ class CompanyAccount extends React.Component {
             return false
         }
         
-        if (spz.length !== 5) {
-            alert('SPZ musí byť tvaru AA111')
+        if (spz.length !== 7) {
+            alert('SPZ musí byť tvaru AA111BB')
             return false
         }
 
@@ -211,7 +211,7 @@ class CompanyAccount extends React.Component {
         let result = ""
         for (let i = 0; i < 2; i++) {
             if (!spz.charAt(i).match(letters)) {
-                alert('SPZ musí byť tvaru AA111')
+                alert('SPZ musí byť tvaru AA111BB')
                 return false
             }
             result += spz.charAt(i)
@@ -219,11 +219,20 @@ class CompanyAccount extends React.Component {
 
         for (let i = 2; i < 5; i++) {
             if (!spz.charAt(i).match(numbers)) {
-                alert('SPZ musí byť tvaru AA111')
+                alert('SPZ musí byť tvaru AA111BB')
                 return false
             }
             result += spz.charAt(i)
         }
+
+        for (let i = 5; i < 7; i++) {
+            if (!spz.charAt(i).match(letters)) {
+                alert('SPZ musí byť tvaru AA111BB')
+                return false
+            }
+            result += spz.charAt(i)
+        }
+        
         this.setState({spz: result})
         return true
     }
