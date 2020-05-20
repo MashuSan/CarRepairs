@@ -41,7 +41,7 @@ class ModifyAccount extends React.Component {
                     technicsName: this.state.technicsName
                 })
             }
-            await fetch('http://localhost:5000/services', requestOptions)
+            await fetch('http://localhost:5000/services/' + this.state.id, requestOptions)
             window.location.reload();
             event.preventDefault()
         };
