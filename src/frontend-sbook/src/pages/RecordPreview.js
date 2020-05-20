@@ -10,6 +10,7 @@ import {Button} from "@material-ui/core";
 import {
     DeleteSection, ModifySection
 } from "../components/Profile/RecordPreview";
+import ModifyAccout from '../pages/ModifyRecord'
 
 class RecordView extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class RecordView extends React.Component {
                     pushToHistory={(path) => this.props.history.push(path)}
                 />
             </If>
-            <ModifySection/>
+            <ModifySection id={this.state.id}/>
             <DeleteSection deleteData={this.deleteData}/>
         </main>);
     }
