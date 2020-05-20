@@ -1,11 +1,15 @@
 import React from "react";
 import {Typography} from "@material-ui/core";
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import {If} from "../components/Lib";
 import './RecordPreview.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCalendarDay, faUserCog } from "@fortawesome/free-solid-svg-icons";
 import {downloadRecord} from "../services/downloadRecordData";
+import {Button} from "@material-ui/core";
+import {
+    DeleteSection, ModifySection
+} from "../components/Profile/RecordPreview";
 
 class RecordView extends React.Component {
     constructor(props) {
@@ -21,6 +25,14 @@ class RecordView extends React.Component {
         this.setState({record:record});
     }
 
+    deleteData = async () => {
+        const requestOptions = {
+            method: 'DELETE',
+        }
+        await fetch('http://localhost:5000/services/' + this.state.id, requestOptions);
+        window.location.assign('/search')
+    }
+
     render() {
         var record = this.state.record;
         return (<main>
@@ -33,10 +45,12 @@ class RecordView extends React.Component {
                     materials={record.materials}
                     technicsName={record.technicsName}
                     spz={record.spz}
-
+                
                     pushToHistory={(path) => this.props.history.push(path)}
                 />
             </If>
+            <ModifySection/>
+            <DeleteSection deleteData={this.deleteData}/>
         </main>);
     }
 }
