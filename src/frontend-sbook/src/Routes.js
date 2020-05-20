@@ -3,7 +3,7 @@ import {Switch, Route} from "react-router-dom";
 
 import Search from "./pages/Search";
 import EventView from "./pages/RecordPreview";
-import Account from "./pages/Record";
+import CreateRecord from "./pages/Record";
 import ModifyAccount from "./pages/ModifyRecord"
 
 /**
@@ -15,7 +15,7 @@ export class MySwitch extends React.Component {
         return <Switch>
             <Route path="/event/:id"><EventView/></Route>
             <Route path="/search/:what"><Search/></Route>
-            <Route path="/createService"><Account/></Route>
+            <Route path="/createService"><CreateRecord/></Route>
             <Route path="/search"><Search/></Route>
             <Route path="/modifyAccount/:id"><ModifyAccount/></Route>
             <Route path="/"><Search/></Route>
