@@ -13,6 +13,7 @@ export class DescriptionSection extends React.Component {
                     <TextField id="something"
                                label="Popis závady"
                                multiline
+                               value={this.props.desc}
                                name="description"
                                onChange={e => this.props.updateInput(e)}
                     />
@@ -77,6 +78,7 @@ export class BasicInfoSection extends React.Component {
                 <Grid item sm={3} xs={12}>
                     <TextField label="ŠPZ"
                                name={"spz"}
+                               value={this.props.spzIN}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
                 <Grid item sm={6} xs={12} />
@@ -85,6 +87,7 @@ export class BasicInfoSection extends React.Component {
                 <Grid item sm={3} xs={12}>
                     <TextField label="Najazdené kilometre"
                                name={"kmStatus"}
+                               value={this.props.kmIN}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
                 <Grid item sm={6} xs={12} />
@@ -93,6 +96,7 @@ export class BasicInfoSection extends React.Component {
                 <Grid item sm={3} xs={12}>
                     <TextField label="Technik"
                                name={"technicsName"}
+                               value={this.props.nameIN}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
                 <Grid item sm={6} xs={12} />
@@ -100,14 +104,12 @@ export class BasicInfoSection extends React.Component {
             </Grid>
 
             <div>
-                <DayPicker
-                onDayClick={this.props.handleDayClick}
-                />
-                {this.props.date ? (
-                    <p>{this.props.date}</p>
+                <DayPicker onDayClick={this.props.handleDayClick}/>
+                {this.props.dateIN ? (
+                    <p>{this.props.dateIN}</p>
                 ) : (
                     <p>Zvoľte dátum.</p>
-        )}
+                )}
             </div>
 
         </div>)

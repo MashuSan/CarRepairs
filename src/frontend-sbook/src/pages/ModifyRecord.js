@@ -15,6 +15,11 @@ class ModifyAccount extends React.Component {
             newMaterial: "",
             newPrice: "",
             materials: [],
+            description: "",
+            spz: "",
+            km: "",
+            technicsName: "",
+            date: "",
             id: this.props.match.params.id
         };
     }
@@ -44,13 +49,16 @@ class ModifyAccount extends React.Component {
 
     async componentDidMount() {
         var record = await downloadRecord(this.state.id);
-        this.setState({record:record});
+        this.setState({record: record, materials: record.materials,
+            description: record.description, spz: record.spz, km: record.kmStatus,
+            technicsName: record.technicsName, date: record.date});
     }
 
     render() {
         return (<main>
             <h1>Uprav záznam</h1>
             <DescriptionSection
+                desc={this.state.description}
                 updateInput={this.updateInput}
             />
             <MaterialsSection
@@ -64,6 +72,10 @@ class ModifyAccount extends React.Component {
                 onNewChangePrice={e => this.setState({newPrice: e.target.value})}
                 addEntry={(e) => this.addMatPriEntry(e)}/>
             <BasicInfoSection
+                spzIN={this.state.spz}
+                kmIN={this.state.km}
+                nameIN={this.state.technicsName}
+                dateIN={this.state.date}
                 updateInput={this.updateInput}
                 handleDayClick={this.handleDayClick}
                 date={this.state.date}/>
