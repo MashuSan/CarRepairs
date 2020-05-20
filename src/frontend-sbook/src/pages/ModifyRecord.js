@@ -5,21 +5,29 @@ import {
     DescriptionSection, MaterialsSection,
     BasicInfoSection, SaveSection
 } from "../components/Profile/Record";
+import { downloadRecord } from "../services/downloadRecordData";
 
-class CompanyAccount extends React.Component {
+class ModifyAccount extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            record: "",
             newMaterial: "",
             newPrice: "",
-            materials: []
+            materials: [],
+            description: "",
+            spz: "",
+            kmStatus: "",
+            technicsName: "",
+            date: "",
+            id: this.props.match.params.id
         };
     }
 
     saveData = async (event) => {
         if (this.verifyInput()) {
             const requestOptions = {
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -33,16 +41,26 @@ class CompanyAccount extends React.Component {
                     technicsName: this.state.technicsName
                 })
             }
-            await fetch('http://localhost:5000/services', requestOptions)
-            window.location.reload();
-            event.preventDefault()
+            await fetch('http://localhost:5000/services/' + this.state.id, requestOptions)
+            window.location.assign('/search')
+            event.preventDefault()           
+
         };
+    }
+    createTextNode;
+
+    async componentDidMount() {
+        var record = await downloadRecord(this.state.id);
+        this.setState({record: record, materials: record.materials,
+            description: record.description, spz: record.spz, kmStatus: record.kmStatus,
+            technicsName: record.technicsName, date: record.date});
     }
 
     render() {
         return (<main>
-            <h1>Vytvor záznam</h1>
+            <h1>Uprav záznam</h1>
             <DescriptionSection
+                desc={this.state.description}
                 updateInput={this.updateInput}
             />
             <MaterialsSection
@@ -56,9 +74,13 @@ class CompanyAccount extends React.Component {
                 onNewChangePrice={e => this.setState({newPrice: e.target.value})}
                 addEntry={(e) => this.addMatPriEntry(e)}/>
             <BasicInfoSection
+                spzIN={this.state.spz}
+                kmStatus={this.state.kmStatus}
+                nameIN={this.state.technicsName}
+                date={this.state.date}
                 updateInput={this.updateInput}
                 handleDayClick={this.handleDayClick}
-                date={this.state.date}/>
+            />
             <SaveSection
                 saveData={this.saveData}
             />
@@ -232,9 +254,8 @@ class CompanyAccount extends React.Component {
             }
             result += spz.charAt(i)
         }
-        
         this.setState({spz: result})
         return true
     }
 }
-export default withRouter(CompanyAccount);
+export default withRouter(ModifyAccount);

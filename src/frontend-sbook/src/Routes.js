@@ -4,6 +4,7 @@ import {Switch, Route} from "react-router-dom";
 import Search from "./pages/Search";
 import EventView from "./pages/RecordPreview";
 import Account from "./pages/Record";
+import ModifyAccount from "./pages/ModifyRecord"
 
 /**
  * Application pages switch
@@ -16,6 +17,7 @@ export class MySwitch extends React.Component {
             <Route path="/search/:what"><Search/></Route>
             <Route path="/createService"><Account/></Route>
             <Route path="/search"><Search/></Route>
+            <Route path="/modifyAccount/:id"><ModifyAccount/></Route>
             <Route path="/"><Search/></Route>
         </Switch>
     }
