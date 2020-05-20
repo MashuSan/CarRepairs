@@ -222,8 +222,9 @@ class ModifyAccount extends React.Component {
             return false
         }
         
+        spz = spz.replace(/ /g, '')
         if (spz.length !== 7) {
-            alert('SPZ musí byť tvaru AA111BB')
+            alert('SPZ musí byť tvaru AAZZZZZ, kde A sú veľké písmená a Z sú veľké písmená alebo čísla')
             return false
         }
 
@@ -233,27 +234,20 @@ class ModifyAccount extends React.Component {
         let result = ""
         for (let i = 0; i < 2; i++) {
             if (!spz.charAt(i).match(letters)) {
-                alert('SPZ musí byť tvaru AA111BB')
+                alert('SPZ musí byť tvaru AAZZZZZ, kde A sú veľké písmená a Z sú veľké písmená alebo čísla')
                 return false
             }
             result += spz.charAt(i)
         }
 
-        for (let i = 2; i < 5; i++) {
-            if (!spz.charAt(i).match(numbers)) {
-                alert('SPZ musí byť tvaru AA111BB')
+        for (let i = 2; i < 7; i++) {
+            if (!spz.charAt(i).match(letters) && !spz.charAt(i).match(numbers)) {
+                alert('SPZ musí byť tvaru AAZZZZZ, kde A sú veľké písmená a Z sú veľké písmená alebo čísla')
                 return false
             }
             result += spz.charAt(i)
         }
-
-        for (let i = 5; i < 7; i++) {
-            if (!spz.charAt(i).match(letters)) {
-                alert('SPZ musí byť tvaru AA111BB')
-                return false
-            }
-            result += spz.charAt(i)
-        }
+        
         this.setState({spz: result})
         return true
     }
