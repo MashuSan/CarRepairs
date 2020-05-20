@@ -13,13 +13,6 @@ import Dropdown from '../components/Dropdown'
 
 ////////////// Zbyva jen smazat mapovani studentu
 
-function sortTiles(a, b) {
-    //console.log(a,b);
-    if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
-    if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
-    return 0;
-}
-
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -34,7 +27,7 @@ class Search extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params.what != this.props.match.params.what) {
+        if (prevProps.match.params.what !== this.props.match.params.what) {
             if (["companies", "internships", "events"].includes(this.props.match.params.what)) {
                 this.setState({tab: this.props.match.params.what})
             }
@@ -83,7 +76,6 @@ class Search extends React.Component {
     mapEvents() {
         console.log(this.state);
 
-        var i = 20;
         return this.filter(this.state.events, this.state.search).map(event => {
                 return {
                     if: event.id,
@@ -96,7 +88,7 @@ class Search extends React.Component {
                     link: "/event/" + event.id,
                 };
             }
-        )  //.sort((a, b) => sortTiles(a, b))
+        ) 
     }
 
     mapToGrid(array) {
@@ -145,7 +137,7 @@ class Search extends React.Component {
                     }}
                     onChange={(value) => 
                         {
-                        if (value == "")
+                        if (value === "")
                         {
                             this.setState({currentSearch: "SPZ"})
                         } 

@@ -200,7 +200,7 @@ class CompanyAccount extends React.Component {
             return false
         }
         
-        if (spz.length != 5) {
+        if (spz.length !== 5) {
             alert('SPZ musí byť tvaru AA111')
             return false
         }

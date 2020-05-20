@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Typography} from '@material-ui/core';
 import './SearchTile.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faMoneyBillWave, faUserAlt} from '@fortawesome/free-solid-svg-icons';
+import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
 import {If} from './Lib';
 
 function getName(props){
