@@ -10,9 +10,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 
-
-////////////// Zbyva jen smazat mapovani studentu
-
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -93,7 +90,7 @@ class Search extends React.Component {
 
     mapToGrid(array) {
         return array.map(item => <Grid item xs={12}>
-                <Link to={item.link} className="notA" target={"blank"}>
+                <Link to={item.link} className="notA">
                     <SearchRow {...item}/>
                 </Link>
             </Grid>

@@ -7,7 +7,7 @@ import {If} from './Lib';
 
 function getName(props){
     if (props.technicsName.length > 10){
-    return props.technicsName.substring(0, 7) + "...";
+        return props.technicsName.substring(0, 8) + "..";
     }
     else{
         return props.technicsName
