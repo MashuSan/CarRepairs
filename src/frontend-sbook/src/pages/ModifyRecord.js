@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createElement} from "react";
 import {withRouter} from 'react-router-dom';
 import "./Record.css";
 import {
@@ -17,7 +17,7 @@ class ModifyAccount extends React.Component {
             materials: [],
             description: "",
             spz: "",
-            km: "",
+            kmStatus: "",
             technicsName: "",
             date: "",
             id: this.props.match.params.id
@@ -46,11 +46,12 @@ class ModifyAccount extends React.Component {
             event.preventDefault()
         };
     }
+    createTextNode;
 
     async componentDidMount() {
         var record = await downloadRecord(this.state.id);
         this.setState({record: record, materials: record.materials,
-            description: record.description, spz: record.spz, km: record.kmStatus,
+            description: record.description, spz: record.spz, kmStatus: record.kmStatus,
             technicsName: record.technicsName, date: record.date});
     }
 
@@ -73,7 +74,7 @@ class ModifyAccount extends React.Component {
                 addEntry={(e) => this.addMatPriEntry(e)}/>
             <BasicInfoSection
                 spzIN={this.state.spz}
-                kmIN={this.state.km}
+                kmStatus={this.state.kmStatus}
                 nameIN={this.state.technicsName}
                 date={this.state.date}
                 updateInput={this.updateInput}

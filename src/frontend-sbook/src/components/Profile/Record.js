@@ -87,7 +87,7 @@ export class BasicInfoSection extends React.Component {
                 <Grid item sm={3} xs={12}>
                     <TextField label="Najazdené kilometre"
                                name={"kmStatus"}
-                               value={this.props.kmIN}
+                               value={this.props.kmStatus}
                                onChange={(e) => this.props.updateInput(e)}/>
                 </Grid>
                 <Grid item sm={6} xs={12} />
