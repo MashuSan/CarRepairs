@@ -1,8 +1,7 @@
 import React from "react";
-import {Button, Grid, TextField} from "@material-ui/core";
-import DayPicker from 'react-day-picker';
+import {Button} from "@material-ui/core";
 import 'react-day-picker/lib/style.css';
-import {Link, withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export class DeleteSection extends React.Component {
     render() {

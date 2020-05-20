@@ -1,4 +1,4 @@
-import React, {createElement} from "react";
+import React from "react";
 import {withRouter} from 'react-router-dom';
 import "./Record.css";
 import {
@@ -42,8 +42,8 @@ class ModifyAccount extends React.Component {
                 })
             }
             await fetch('http://localhost:5000/services/' + this.state.id, requestOptions)
-            event.preventDefault()
             window.location.assign('/search')
+            event.preventDefault()           
 
         };
     }
@@ -80,7 +80,7 @@ class ModifyAccount extends React.Component {
                 date={this.state.date}
                 updateInput={this.updateInput}
                 handleDayClick={this.handleDayClick}
-                date={this.state.date}/>
+            />
             <SaveSection
                 saveData={this.saveData}
             />
