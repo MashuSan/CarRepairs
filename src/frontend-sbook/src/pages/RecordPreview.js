@@ -60,8 +60,7 @@ export default withRouter(RecordView);
 function RecordDetail(props) {
     var price = 0;
     props.materials.map((m) => price += parseInt(m.price))
-    return (<div className="internshipDetail">
-
+    return (<div>
             <h1>Detail opravy</h1>
             <div className={"infoLabel"} title={"Dátum opravy a meno technika"}>
                 <Icon icon={faCalendarDay}/>

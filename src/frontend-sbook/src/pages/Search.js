@@ -17,14 +17,6 @@ class Search extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.what !== this.props.match.params.what) {
-            if (["companies", "internships", "events"].includes(this.props.match.params.what)) {
-                this.setState({tab: this.props.match.params.what})
-            }
-        }
-    }
-
     async fetchData(){
         const productsRes = await fetch('http://localhost:5000/services');
         const products = await productsRes.json(); 
@@ -97,7 +89,6 @@ class Search extends React.Component {
                 label="Search"
                 value={this.state.search}
                 style={{padding: ".5em"}}
-                className="searchBar"
                 type="text"
                 placeholder={this.state.currentSearch}
                 endAdornment={
