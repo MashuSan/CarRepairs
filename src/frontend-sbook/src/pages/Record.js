@@ -1,6 +1,5 @@
 import React from "react";
 import {withRouter} from 'react-router-dom';
-import "./Record.css";
 import {
     DescriptionSection, MaterialsSection,
     BasicInfoSection, SaveSection
@@ -41,7 +40,7 @@ class CreateRecord extends React.Component {
 
     render() {
         return (<main>
-            <h1>Vytvor záznam</h1>
+            <h1>Nový záznam</h1>
             <DescriptionSection
                 updateInput={this.updateInput}
             />

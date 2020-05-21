@@ -58,7 +58,7 @@ class ModifyAccount extends React.Component {
 
     render() {
         return (<main>
-            <h1>Uprav záznam</h1>
+            <h1>Úprava záznamu</h1>
             <DescriptionSection
                 desc={this.state.description}
                 updateInput={this.updateInput}
