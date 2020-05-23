@@ -17,14 +17,6 @@ class Search extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.what !== this.props.match.params.what) {
-            if (["companies", "internships", "events"].includes(this.props.match.params.what)) {
-                this.setState({tab: this.props.match.params.what})
-            }
-        }
-    }
-
     async fetchData(){
         const productsRes = await fetch('http://localhost:5000/services');
         const products = await productsRes.json(); 
@@ -44,7 +36,6 @@ class Search extends React.Component {
                     return false;
                     
                 case "Dátum":
-                    
                     if (item.date.replace(' ', '').replace(' ', '')
                         .toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
@@ -66,18 +57,17 @@ class Search extends React.Component {
 
     mapEvents() {
         return this.filter(this.state.events, this.state.search).map(event => {
-                return {
-                    if: event.id,
-                    date: event.date,
-                    kmStatus: event.kmStatus,
-                    description: event.description,
-                    materials: event.materials,
-                    technicsName: event.technicsName,
-                    spz: event.spz,
-                    link: "/event/" + event.id,
-                };
-            }
-        ) 
+            return {
+                if: event.id,
+                date: event.date,
+                kmStatus: event.kmStatus,
+                description: event.description,
+                materials: event.materials,
+                technicsName: event.technicsName,
+                spz: event.spz,
+                link: "/event/" + event.id,
+            };
+        })
     }
 
     mapToGrid(array) {
@@ -97,7 +87,6 @@ class Search extends React.Component {
                 label="Search"
                 value={this.state.search}
                 style={{padding: ".5em"}}
-                className="searchBar"
                 type="text"
                 placeholder={this.state.currentSearch}
                 endAdornment={

@@ -1,17 +1,6 @@
-#serachMain .MuiButtonGroup-root{
-    width:100%;
-    display:flex;
-}
-
-#searchMain .MuiButtonGroup-root button{
-    width:100%;
-}
-
 #searchResults{
-    padding-top:2em
+    padding-top: 2em;
 }
-
-#searchMain .tabLabel{padding-left:.5em}
 
 #searchMain{
     max-width: 1100px;
