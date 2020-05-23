@@ -36,7 +36,6 @@ class Search extends React.Component {
                     return false;
                     
                 case "Dátum":
-                    
                     if (item.date.replace(' ', '').replace(' ', '')
                         .toLowerCase().includes(string.toLowerCase())) return true;
                     return false;
@@ -58,18 +57,17 @@ class Search extends React.Component {
 
     mapEvents() {
         return this.filter(this.state.events, this.state.search).map(event => {
-                return {
-                    if: event.id,
-                    date: event.date,
-                    kmStatus: event.kmStatus,
-                    description: event.description,
-                    materials: event.materials,
-                    technicsName: event.technicsName,
-                    spz: event.spz,
-                    link: "/event/" + event.id,
-                };
-            }
-        ) 
+            return {
+                if: event.id,
+                date: event.date,
+                kmStatus: event.kmStatus,
+                description: event.description,
+                materials: event.materials,
+                technicsName: event.technicsName,
+                spz: event.spz,
+                link: "/event/" + event.id,
+            };
+        })
     }
 
     mapToGrid(array) {

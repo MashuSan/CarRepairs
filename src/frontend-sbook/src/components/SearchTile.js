@@ -19,24 +19,19 @@ export function SearchRow(props) {
             <div className="searchRowHeader">
                 <div className="searchRowTitle"><b>{props.spz}</b><span><i>{props.date}</i></span></div>
                 <div className="searchRowLocation">
-                    <If if={props.technicsName}>
-                        <Typography color="primary">
-                            <FontAwesomeIcon style={{marginLeft: "5px", position: "relative", top: "2px"}}
-                                             icon={faUserAlt} className="faIcon"
-                            />
-                        </Typography>
-                        <div style={{width: "80px", marginRight: "5px", textAlign: "left"}}>
-                            <span style={{position: "relative", top: "5px"}}>{getName(props)}</span>
-                        </div>
-                    </If>
-
+                    <Typography color="primary">
+                        <FontAwesomeIcon style={{marginLeft: "5px", position: "relative", top: "2px"}}
+                                         icon={faUserAlt} className="faIcon"
+                        />
+                    </Typography>
+                    <div style={{width: "80px", marginRight: "5px", textAlign: "left"}}>
+                        <span style={{position: "relative", top: "5px"}}>{getName(props)}</span>
+                    </div>
                 </div>
             </div>
-            <If if={props.description}>
-                <div className="searchRowDescription">
-                    {props.description}
-                </div>
-            </If>
+            <div className="searchRowDescription">
+                {props.description}
+            </div>
         </div>
     </Card>)
 }
