@@ -3,7 +3,6 @@ import {Card, Typography} from '@material-ui/core';
 import './SearchTile.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
-import {If} from './Lib';
 
 function getName(props){
     if (props.technicsName.length > 10) {
