@@ -7,6 +7,13 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faSearch, faHashtag } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '../components/Dropdown'
 
+
+function sortTiles(a, b) {
+    if (a.date> b.date) return 1;
+    if (a.date < b.date) return -1;
+    return 0;
+}
+
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -55,7 +62,7 @@ class Search extends React.Component {
         })
     }
 
-    mapEvents() {
+    mapRecords() {
         return this.filter(this.state.events, this.state.search).map(event => {
             return {
                 if: event.id,
@@ -67,7 +74,7 @@ class Search extends React.Component {
                 spz: event.spz,
                 link: "/event/" + event.id,
             };
-        })
+        }).sort((a, b) => sortTiles(a, b))
     }
 
     mapToGrid(array) {
@@ -124,7 +131,7 @@ class Search extends React.Component {
             </section>
                           
             <Grid container spacing={3} id="searchResults">
-                {this.mapToGrid(this.mapEvents())}
+                {this.mapToGrid(this.mapRecords())}
             </Grid>
         </main>
     }
