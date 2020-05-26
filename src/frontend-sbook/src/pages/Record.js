@@ -17,6 +17,7 @@ class CreateRecord extends React.Component {
 
     saveData = async (event) => {
         if (this.verifyInput()) {
+            alert(this.state.spz)
             const requestOptions = {
                 method: 'POST',
                 headers: {
