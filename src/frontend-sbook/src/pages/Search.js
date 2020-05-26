@@ -9,8 +9,8 @@ import Dropdown from '../components/Dropdown'
 
 
 function sortTiles(a, b) {
-    if (a.date> b.date) return 1;
-    if (a.date < b.date) return -1;
+    if (a.date > b.date) return -1;
+    if (a.date < b.date) return 1;
     return 0;
 }
 
