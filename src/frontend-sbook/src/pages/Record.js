@@ -130,6 +130,11 @@ class CreateRecord extends React.Component {
                 return false
             }
 
+            if (!price) {
+                alert('Cena nemôže byť prázdna')
+                return false
+            }
+
             let numbers = /[0-9]/
             if (price[0] === '0' && price.length !== 1) {
                 alert('Nevalidný formát ceny')
