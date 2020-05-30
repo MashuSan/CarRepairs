@@ -4,10 +4,7 @@ import './theme.css';
 export const mainTheme = createMuiTheme({
     palette: {
         primary: {
-            main: "#a61b1b",
-        },
-        secondary: {
-            main: '#f44336',
-        },
-    },
+            main: "rgb(162,60,24)",
+        }
+    }
 });
