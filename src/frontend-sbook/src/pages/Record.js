@@ -16,8 +16,8 @@ class CreateRecord extends React.Component {
     }
 
     saveData = async (event) => {
+        event.preventDefault()
         if (this.verifyInput()) {
-            alert(this.state.spz)
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -35,7 +35,6 @@ class CreateRecord extends React.Component {
             }
             await fetch('http://localhost:5000/services', requestOptions)
             window.location.reload();
-            event.preventDefault()
         };
     }
 
@@ -132,9 +131,12 @@ class CreateRecord extends React.Component {
             }
 
             let numbers = /[0-9]/
-            let processed = price.replace(/ /g, '')
-            for (let i = 0; i < processed.length; i++) {
-                if (!processed[i].match(numbers)) {
+            if (price[0] === '0' && price.length !== 1) {
+                alert('Nevalidný formát ceny')
+                return false
+            }
+            for (let i = 0; i < price.length; i++) {
+                if (!price[i].match(numbers)) {
                     alert('Cena musí byť číslo')
                     return false
                 }
@@ -143,7 +145,7 @@ class CreateRecord extends React.Component {
             let materials = this.state.materials
             materials[i] = {
                 material: materials[i].material,
-                price: processed
+                price: price
             }
             this.setState({materials: materials})
         }
@@ -181,15 +183,19 @@ class CreateRecord extends React.Component {
         }
         
         let numbers = /[0-9]/
-        let processed = this.state.kmStatus.replace(/ /g, '')
-        for (let i = 0; i < processed.length; i++) {
-            if (!processed[i].match(numbers)) {
+        let km = this.state.kmStatus
+        if (km[0] === '0' && km.length !== 1) {
+            alert('Nevalidný formát kilometrov')
+            return false
+        }
+        for (let i = 0; i < km.length; i++) {
+            if (!km[i].match(numbers)) {
                 alert('Najazdené kilometre musia byť číslo')
                 return false
             }
         }
         
-        this.setState({kmStatus: String(processed)})
+        this.setState({kmStatus: String(km)})
         return true
     }
 
@@ -200,7 +206,6 @@ class CreateRecord extends React.Component {
             return false
         }
         
-        spz = spz.replace(/ /g, '')
         if (spz.length !== 7) {
             alert('SPZ musí byť tvaru AAZZZZZ, kde A sú veľké písmená a Z sú veľké písmená alebo čísla')
             return false
