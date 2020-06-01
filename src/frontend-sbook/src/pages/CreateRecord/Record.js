@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {
     DescriptionSection, MaterialsSection,
     BasicInfoSection, SaveSection
-} from "../components/Profile/Record";
+} from "./RecordComponent";
 
 class CreateRecord extends React.Component {
     constructor(props) {

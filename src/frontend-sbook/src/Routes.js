@@ -1,10 +1,10 @@
 import React from 'react';
 import {Switch, Route} from "react-router-dom";
 
-import Search from "./pages/Search";
-import EventView from "./pages/RecordPreview";
-import CreateRecord from "./pages/Record";
-import ModifyAccount from "./pages/ModifyRecord"
+import Search from "./pages/Search/Search";
+import EventView from "./pages/RecordPreview/RecordPreview";
+import CreateRecord from "./pages/CreateRecord/Record";
+import ModifyAccount from "./pages/CreateRecord/ModifyRecord"
 
 /**
  * Application pages switch

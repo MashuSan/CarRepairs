@@ -4,8 +4,8 @@ import "./Record.css";
 import {
     DescriptionSection, MaterialsSection,
     BasicInfoSection, SaveSection
-} from "../components/Profile/Record";
-import { downloadRecord } from "../services/downloadRecordData";
+} from "./RecordComponent";
+import { downloadRecord } from "../../services/downloadRecordData";
 
 class ModifyAccount extends React.Component {
     constructor(props) {

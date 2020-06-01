@@ -1,14 +1,14 @@
 import React from "react";
 import {Typography} from "@material-ui/core";
 import {withRouter} from 'react-router-dom';
-import {If} from "../components/Lib";
+import {If} from "../../components/Lib";
 import './RecordPreview.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCalendarDay, faUserCog } from "@fortawesome/free-solid-svg-icons";
-import {downloadRecord} from "../services/downloadRecordData";
+import {downloadRecord} from "../../services/downloadRecordData";
 import {
     DeleteSection, ModifySection
-} from "../components/Profile/RecordPreview";
+} from "./RecordPreviewComponent";
 
 class RecordView extends React.Component {
     constructor(props) {

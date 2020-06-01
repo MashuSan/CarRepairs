@@ -1,11 +1,11 @@
 import React from 'react';
 import {Grid, Input, InputAdornment, IconButton} from '@material-ui/core';
 import {Link, withRouter} from 'react-router-dom';
-import {SearchRow} from '../components/SearchTile';
+import {SearchRow} from '../../components/SearchTile';
 import './Search.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faSearch, faHashtag } from '@fortawesome/free-solid-svg-icons';
-import Dropdown from '../components/Dropdown'
+import Dropdown from '../../components/Dropdown'
 
 
 function sortTiles(a, b) {
