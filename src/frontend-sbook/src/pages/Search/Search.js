@@ -13,6 +13,14 @@ function sortTiles(a, b) {
     if (a.date < b.date) return 1;
     return 0;
 }
+const filterOptions = {
+    "": "Filtrovať podľa",
+    "SPZ": "ŠPZ",
+    "Dátum": "Dátum",
+    "Technik": "Meno technika",
+    "Popis": "Popis"
+};
+const defFilterOption = "SPZ";
 
 class Search extends React.Component {
     constructor(props) {
@@ -20,18 +28,13 @@ class Search extends React.Component {
         this.state = {
             search: decodeURI(window.location.search.substr(3)),
             records: [],
-            currentSearch: "SPZ"
+            currentSearch: defFilterOption
         }
     }
 
-    async fetchData(){
-        const productsRes = await fetch('http://localhost:5000/services');
-        return await productsRes.json();
-
-    }
-
     async componentDidMount() {
-        const data = await this.fetchData();
+        const productsRes = await fetch('http://localhost:5000/services');
+        const data = await productsRes.json();
         this.setState({records: data});
     }
 
@@ -39,40 +42,34 @@ class Search extends React.Component {
         return array.filter(item => {
             switch(this.state.currentSearch){
                 case "SPZ":
-                    if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
-                    return false;
-                    
+                    return (item.spz.toLowerCase().includes(string.toLowerCase()));
                 case "Dátum":
-                    if (item.date.replace(' ', '').replace(' ', '')
-                        .toLowerCase().includes(string.toLowerCase())) return true;
-                    return false;
+                    return (item.date.replace(' ', '').replace(' ', '')
+                        .toLowerCase().includes(string.toLowerCase()));
                     
                 case "Technik":
-                    if (item.technicsName.toLowerCase().includes(string.toLowerCase())) return true;
-                    return false;
+                    return (item.technicsName.toLowerCase().includes(string.toLowerCase()));
                     
                 case "Popis":
-                    if (item.description.toLowerCase().includes(string.toLowerCase())) return true;
-                    return false;
+                    return(item.description.toLowerCase().includes(string.toLowerCase()));
                     
                 default:
-                    if (item.spz.toLowerCase().includes(string.toLowerCase())) return true;
-                    return false;                    
+                    return (item.spz.toLowerCase().includes(string.toLowerCase()));
             }
         })
     }
 
     mapRecords() {
-        return this.filter(this.state.records, this.state.search).map(event => {
+        return this.filter(this.state.records, this.state.search).map(record => {
             return {
-                if: event.id,
-                date: event.date,
-                kmStatus: event.kmStatus,
-                description: event.description,
-                materials: event.materials,
-                technicsName: event.technicsName,
-                spz: event.spz,
-                link: "/record/" + event.id,
+                id: record.id,
+                date: record.date,
+                kmStatus: record.kmStatus,
+                description: record.description,
+                materials: record.materials,
+                technicsName: record.technicsName,
+                spz: record.spz,
+                link: "/record/" + record.id,
             };
         }).sort((a, b) => sortTiles(a, b))
     }
@@ -112,16 +109,10 @@ class Search extends React.Component {
             <section>
                 <Dropdown
                     icon={faHashtag}
-                    options={{
-                        "": "Filtrovať podľa",
-                        "SPZ": "ŠPZ",
-                        "Dátum": "Dátum",
-                        "Technik": "Meno technika",
-                        "Popis": "Popis"
-                    }}
+                    options={filterOptions}
                     onChange={(value) => {
                         if (value === "") {
-                            this.setState({currentSearch: "SPZ"})
+                            this.setState({currentSearch: defFilterOption})
                         } else {
                             this.setState({currentSearch: value})
                         } 
