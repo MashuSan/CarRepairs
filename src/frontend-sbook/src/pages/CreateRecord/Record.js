@@ -1,33 +1,25 @@
 import React from "react";
 import {withRouter} from 'react-router-dom';
-import "./Record.css";
 import {
     DescriptionSection, MaterialsSection,
     BasicInfoSection, SaveSection
-} from "../components/Profile/Record";
-import { downloadRecord } from "../services/downloadRecordData";
+} from "./RecordComponent";
 
-class ModifyAccount extends React.Component {
+class CreateRecord extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            record: "",
             newMaterial: "",
             newPrice: "",
-            materials: [],
-            description: "",
-            spz: "",
-            kmStatus: "",
-            technicsName: "",
-            date: "",
-            id: this.props.match.params.id
+            materials: []
         };
     }
 
     saveData = async (event) => {
+        event.preventDefault();
         if (this.verifyInput()) {
             const requestOptions = {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -40,27 +32,16 @@ class ModifyAccount extends React.Component {
                     materials: this.state.materials,
                     technicsName: this.state.technicsName
                 })
-            }
-            await fetch('http://localhost:5000/services/' + this.state.id, requestOptions)
-            window.location.assign('/search')
-            event.preventDefault()           
-
+            };
+            await fetch('http://localhost:5000/services', requestOptions);
+            window.location.reload();
         };
-    }
-    createTextNode;
-
-    async componentDidMount() {
-        var record = await downloadRecord(this.state.id);
-        this.setState({record: record, materials: record.materials,
-            description: record.description, spz: record.spz, kmStatus: record.kmStatus,
-            technicsName: record.technicsName, date: record.date});
-    }
+    };
 
     render() {
         return (<main>
-            <h1>Úprava záznamu</h1>
+            <h1>Nový záznam</h1>
             <DescriptionSection
-                desc={this.state.description}
                 updateInput={this.updateInput}
             />
             <MaterialsSection
@@ -74,13 +55,9 @@ class ModifyAccount extends React.Component {
                 onNewChangePrice={e => this.setState({newPrice: e.target.value})}
                 addEntry={(e) => this.addMatPriEntry(e)}/>
             <BasicInfoSection
-                spzIN={this.state.spz}
-                kmStatus={this.state.kmStatus}
-                nameIN={this.state.technicsName}
-                date={this.state.date}
                 updateInput={this.updateInput}
                 handleDayClick={this.handleDayClick}
-            />
+                date={this.state.date}/>
             <SaveSection
                 saveData={this.saveData}
             />
@@ -94,7 +71,7 @@ class ModifyAccount extends React.Component {
                 price: materials[index].price
             };
             this.setState({materials: materials});
-    }
+    };
 
     onChangePrice = (e, index) => {
         let materials = this.state.materials;
@@ -103,34 +80,34 @@ class ModifyAccount extends React.Component {
                 price: e.target.value
             };
         this.setState({materials: materials});
-    }
+    };
 
     addMatPriEntry = (e) => {
         var materials = this.state.materials;
         var item = {
             material: this.state.newMaterial,
             price: this.state.newPrice
-        }
+        };
         materials.push(item);
         this.setState({materials: materials, newMaterial: "", newPrice: ""});
-    }
+    };
 
     deleteMatPriEntry= (index) => (e) => {
         var materials = this.state.materials;
         materials.splice(index, 1);
         this.setState({materials: materials});
-    }
+    };
 
     updateInput = e => {
         this.setState({[e.target.name]: e.target.value});
-    }
+    };
 
     handleDayClick = day => {
         day = day.toLocaleDateString();
         this.setState({ date: day });
-    }
+    };
 
-   // parsers
+    // parsers
 
     verifyInput = () => {
         if (this.verifyDescription() && this.verifyPriceMaterial() && this.verifySPZ() && 
@@ -139,17 +116,17 @@ class ModifyAccount extends React.Component {
         } else {
             return false
         }
-    }
+    };
 
     verifyPriceMaterial = () => {
         for (let i = 0; i < this.state.materials.length; i++) {
             let obj = this.state.materials[i]
             
-            let material = String(obj[Object.keys(obj)[0]])
-            let price = String(obj[Object.keys(obj)[1]])
+            let material = String(obj[Object.keys(obj)[0]]);
+            let price = String(obj[Object.keys(obj)[1]]);
             
             if (!material) {
-                alert('Materiál nemôže byť prázdny')
+                alert('Materiál nemôže byť prázdny');
                 return false
             }
 
@@ -263,4 +240,4 @@ class ModifyAccount extends React.Component {
         return true
     }
 }
-export default withRouter(ModifyAccount);
+export default withRouter(CreateRecord);
