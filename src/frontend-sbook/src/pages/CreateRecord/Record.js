@@ -16,7 +16,7 @@ class CreateRecord extends React.Component {
     }
 
     saveData = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         if (this.verifyInput()) {
             const requestOptions = {
                 method: 'POST',
@@ -32,11 +32,11 @@ class CreateRecord extends React.Component {
                     materials: this.state.materials,
                     technicsName: this.state.technicsName
                 })
-            }
-            await fetch('http://localhost:5000/services', requestOptions)
+            };
+            await fetch('http://localhost:5000/services', requestOptions);
             window.location.reload();
         };
-    }
+    };
 
     render() {
         return (<main>
@@ -71,7 +71,7 @@ class CreateRecord extends React.Component {
                 price: materials[index].price
             };
             this.setState({materials: materials});
-    }
+    };
 
     onChangePrice = (e, index) => {
         let materials = this.state.materials;
@@ -80,32 +80,32 @@ class CreateRecord extends React.Component {
                 price: e.target.value
             };
         this.setState({materials: materials});
-    }
+    };
 
     addMatPriEntry = (e) => {
         var materials = this.state.materials;
         var item = {
             material: this.state.newMaterial,
             price: this.state.newPrice
-        }
+        };
         materials.push(item);
         this.setState({materials: materials, newMaterial: "", newPrice: ""});
-    }
+    };
 
     deleteMatPriEntry= (index) => (e) => {
         var materials = this.state.materials;
         materials.splice(index, 1);
         this.setState({materials: materials});
-    }
+    };
 
     updateInput = e => {
         this.setState({[e.target.name]: e.target.value});
-    }
+    };
 
     handleDayClick = day => {
         day = day.toLocaleDateString();
         this.setState({ date: day });
-    }
+    };
 
     // parsers
 
@@ -116,17 +116,17 @@ class CreateRecord extends React.Component {
         } else {
             return false
         }
-    }
+    };
 
     verifyPriceMaterial = () => {
         for (let i = 0; i < this.state.materials.length; i++) {
             let obj = this.state.materials[i]
             
-            let material = String(obj[Object.keys(obj)[0]])
-            let price = String(obj[Object.keys(obj)[1]])
+            let material = String(obj[Object.keys(obj)[0]]);
+            let price = String(obj[Object.keys(obj)[1]]);
             
             if (!material) {
-                alert('Materiál nemôže byť prázdny')
+                alert('Materiál nemôže byť prázdny');
                 return false
             }
 

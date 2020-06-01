@@ -19,20 +19,20 @@ class Search extends React.Component {
         super(props);
         this.state = {
             search: decodeURI(window.location.search.substr(3)),
-            events: [],
+            records: [],
             currentSearch: "SPZ"
         }
     }
 
     async fetchData(){
         const productsRes = await fetch('http://localhost:5000/services');
-        const products = await productsRes.json(); 
-        return products;   
+        return await productsRes.json();
+
     }
 
     async componentDidMount() {
         const data = await this.fetchData();
-        this.setState({events: data});
+        this.setState({records: data});
     }
 
     filter(array, string) {
@@ -63,7 +63,7 @@ class Search extends React.Component {
     }
 
     mapRecords() {
-        return this.filter(this.state.events, this.state.search).map(event => {
+        return this.filter(this.state.records, this.state.search).map(event => {
             return {
                 if: event.id,
                 date: event.date,
@@ -72,7 +72,7 @@ class Search extends React.Component {
                 materials: event.materials,
                 technicsName: event.technicsName,
                 spz: event.spz,
-                link: "/event/" + event.id,
+                link: "/record/" + event.id,
             };
         }).sort((a, b) => sortTiles(a, b))
     }
