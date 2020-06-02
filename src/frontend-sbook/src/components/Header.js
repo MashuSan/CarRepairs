@@ -10,7 +10,7 @@ class Header extends React.Component {
                 <div style={{flexGrow: 1}}/>
 
                 <div className="links">
-                    <Link to="/search/events" className="notA headerLink">
+                    <Link to="/search/records" className="notA headerLink">
                         Zobraziť opravy
                     </Link>
                     <Link to="/createService" className="notA headerLink">
