@@ -9,9 +9,15 @@ import Dropdown from '../../components/Dropdown'
 
 
 function sortTiles(a, b) {
-    if (a.date > b.date) return -1;
-    if (a.date < b.date) return 1;
+    var firstDate = a.date.split(".")
+    var secondDate = b.date.split(".")
+
+    for (let i = 2; i >= 0; i--){
+        if (parseInt(firstDate[i]) > parseInt(secondDate[i])) return -1;
+        if (parseInt(firstDate[i]) < parseInt(secondDate[i])) return 1;
+    }
     return 0;
+    
 }
 const filterOptions = {
     "": "Filtrovať podľa",
